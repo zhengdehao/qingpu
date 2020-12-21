@@ -1,6 +1,5 @@
 <template>
-    <router-link to="/"></router-link>
-    <router-link to="/about"></router-link>
+  <h1>这里是头部</h1>
 </template>
 
 <script>
