@@ -1,6 +1,7 @@
 const Home = { template: '<div>Home</div>' }
 const About = { template: '<div>About</div>' }
 
+import { createRouter, createWebHashHistory } from "vue-router"
 
 const routes = [
   { path: '/', component: Home },
@@ -8,7 +9,7 @@ const routes = [
 ]
 
  
-export const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
-  routes, 
+export const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
 })
