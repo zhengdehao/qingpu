@@ -1,14 +1,19 @@
 <template>
-  <div></div>
+  <div>
+    <banner/>
+  </div>
 </template>
 
-<script>
+<script  lang="ts">
+import banner from "../components/Home/banner.vue";
 export default {
   data() {
     return {};
   },
 
-  components: {},
+  components: {
+    banner
+  },
 
   computed: {},
 
