@@ -1,18 +1,22 @@
 <template>
   <div>
-    <banner/>
+    <!-- 首页轮播图 -->
+    <banner />
+    <myfooter />
   </div>
 </template>
 
 <script  lang="ts">
-import banner from "../components/Home/banner.vue";
+import banner from "../../components/Home/banner.vue";
+import myfooter from "../../components/Common/MyFooter.vue";
 export default {
   data() {
     return {};
   },
 
   components: {
-    banner
+    banner,
+    myfooter
   },
 
   computed: {},

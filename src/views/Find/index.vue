@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    发现
+  </div>
 </template>
 
 <script>
@@ -17,4 +19,4 @@ export default {
   methods: {}
 };
 </script>
-<style lang='less' scoped></style>
+<style lang="scss" scoped></style>
