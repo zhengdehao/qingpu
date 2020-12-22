@@ -2,14 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
 import { router } from "./routes"
-import Vant from 'vant'
 import 'vant/lib/index.css'
-
+import { Button } from 'vant'
 
 
 
 
 const app = createApp(App);
 app.use(router);
-app.use(Vant)
+app.use(Button)
 app.mount('#app');
