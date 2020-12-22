@@ -8,7 +8,11 @@ const routes = [
   { path: '/about', component: About },
 ]
 
+<<<<<<< HEAD:src/routes/index.ts
 
+=======
+ 
+>>>>>>> master:src/routes/index.ts
 export const router = createRouter({
   history: createWebHashHistory(),
   routes,
