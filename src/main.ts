@@ -3,8 +3,8 @@ import App from './App.vue'
 import './index.css'
 import { router } from "./routes"
 import 'vant/lib/index.css'
+import "amfe-flexible"
 import { Button } from 'vant'
-
 
 
 
