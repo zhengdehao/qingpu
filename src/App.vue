@@ -1,18 +1,12 @@
 <template>
-<img :src="img" alt="">
-    <home/>
-    <router-link to="/"></router-link>
-    <router-link to="/about"></router-link>
+  <!-- 视图文件 -->
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
-import home from "./views/Home.vue";
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'App',
-  components: { 
-    home,
-  }
+  name: 'App'
 })
 </script>
 
