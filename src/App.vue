@@ -10,15 +10,6 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less">
-div{
-  h2 {
-  font-size: 20px;
-  color: red;
- }
-}
+<style lang='less' scoped>
 
-  
 </style>
-
-
