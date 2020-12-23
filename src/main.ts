@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { router } from "./routes";
-import "../src/assets/font/iconfont.css"
+import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
 //引入文件
