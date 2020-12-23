@@ -9,7 +9,8 @@
 <script  lang="ts">
 import banner from "../../components/Home/banner.vue";
 import myfooter from "../../components/Common/MyFooter.vue";
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent ({
   data() {
     return {};
   },
@@ -24,7 +25,7 @@ export default {
   mounted() {},
 
   methods: {}
-};
+})
 </script>
 <style lang='less' scoped>
 

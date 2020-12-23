@@ -10,10 +10,13 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent ({
   data() {
-    return {};
+    return {
+      
+    };
   },
 
   components: {},
@@ -23,14 +26,14 @@ export default {
   mounted() {},
 
   methods: {},
-};
+});
 </script>
 <style lang='less' scoped>
 
   .my-swipe .van-swipe-item {
     color: #fff;
     font-size: 20px;
-    line-height: 150px;
+    line-height: 258.5px;
     text-align: center;
     background-color: #39a9ed;
   }
