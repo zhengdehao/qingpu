@@ -8,19 +8,21 @@ const routes = [
   },
   {
     path: "/home",
-    component: () => import("../views/Home/index.vue")
-  },
-  {
-    path: "/find",
-    component: () => import("../views/Find/index.vue")
-  },
-  {
-    path: "/best",
-    component: () => import("../views/Best/index.vue")
-  },
-  {
-    path: "/mine",
-    component: () => import("../views/Mine/index.vue")
+    component: () => import("../views/Home/index.vue"),
+    children: [
+      {
+        path: "/find",
+        component: () => import("../views/Find/index.vue")
+      },
+      {
+        path: "/best",
+        component: () => import("../views/Best/index.vue")
+      },
+      {
+        path: "/mine",
+        component: () => import("../views/Mine/index.vue")
+      },
+    ]
   },
   {
     path:  "/:catchAll(.*)",
