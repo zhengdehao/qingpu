@@ -21,7 +21,14 @@ const routes = [
       },
       {//跳转臻品
         path: "/best",
-        component: () => import("../views/Home/Best/index.vue")
+        component: () => import("../views/Home/Best/index.vue"),
+        redirect: "/best/recommend",
+        children: [
+          {
+            path: "recommend",
+            component: () => import("../views/Home/Best/recommend/index.vue")
+          }
+        ]
       },
       {//跳转我的
         path: "/mine",

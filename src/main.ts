@@ -6,6 +6,8 @@ import 'vant/lib/index.css';
 //引入文件
 import "./assets/styles/reset.less";
 import "amfe-flexible";
+import "./assets/font/iconfont.css";
+import "./assets/styles/style.less";
 //引入vant组件
 import { 
   Swipe,
@@ -13,7 +15,10 @@ import {
   Tabbar,
   TabbarItem,
   Cell,
-  CellGroup
+  CellGroup,
+  NavBar,
+  Tab,
+  Tabs
 } from 'vant';
 
 
@@ -31,6 +36,13 @@ app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
 
+
+//头部导航栏
+app.use(NavBar);
+
+//臻品分页栏
+app.use(Tab);
+app.use(Tabs);
 
 
 //挂载a'p'p
