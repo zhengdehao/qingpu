@@ -1,10 +1,10 @@
 <template>
   <div>
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search">发现</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">臻品</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+    <van-tabbar v-model="active" :placeholder ="true">
+      <van-tabbar-item icon="home-o" to="/firstpage">首页</van-tabbar-item>
+      <van-tabbar-item icon="search" to="/find">发现</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" to="/best">臻品</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" to="/mine">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
