@@ -1,6 +1,6 @@
 <template>
-  <div>
-    发现
+  <div class="find">
+    <h1>发现</h1>
   </div>
 </template>
 
@@ -20,4 +20,15 @@ export default defineComponent ({
   methods: {}
 });
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.find{
+  padding-top:44px;
+  padding-left:16px;
+  h1{
+    font-size: 24px;
+    padding-top:30px;
+  }
+
+
+}
+</style>

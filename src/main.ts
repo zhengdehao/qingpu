@@ -5,7 +5,7 @@ import "../src/assets/font/iconfont.css"
 import 'vant/lib/index.css';
 
 //引入文件
-import "./assets/styles/reset.scss";
+import "./assets/styles/reset.less";
 import "amfe-flexible";
 //引入vant组件
 import { 
