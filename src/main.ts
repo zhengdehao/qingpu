@@ -7,12 +7,19 @@ import 'vant/lib/index.css';
 //引入文件
 import "./assets/styles/reset.less";
 import "amfe-flexible";
+import "./assets/font/iconfont.css";
+import "./assets/styles/style.less";
 //引入vant组件
 import { 
   Swipe,
   SwipeItem,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Cell,
+  CellGroup,
+  NavBar,
+  Tab,
+  Tabs
 } from 'vant';
 
 
@@ -23,12 +30,20 @@ const app = createApp(App);
 app.use(router);
 
 //使用vant组件
-//首页萝卜图
 app.use(Swipe);
 app.use(SwipeItem);
-//底部tab栏
 app.use(Tabbar);
 app.use(TabbarItem);
+app.use(Cell);
+app.use(CellGroup);
+
+
+//头部导航栏
+app.use(NavBar);
+
+//臻品分页栏
+app.use(Tab);
+app.use(Tabs);
 
 
 //挂载a'p'p
