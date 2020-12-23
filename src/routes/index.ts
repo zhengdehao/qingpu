@@ -16,12 +16,19 @@ const routes = [
       },
       {
         path: "/best",
-        component: () => import("../views/Best/index.vue")
+        component: () => import("../views/Home/Best/index.vue"),
+        redirect: "/best/recommend",
+        children: [
+          {
+            path: "recommend",
+            component: () => import("../views/Home/Best/recommend/index.vue")
+          }
+        ]
       },
       {
         path: "/mine",
         component: () => import("../views/Mine/index.vue")
-      },
+      }
     ]
   },
   {

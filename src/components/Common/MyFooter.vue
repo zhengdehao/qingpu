@@ -1,9 +1,9 @@
 <template>
   <div>
-    <van-tabbar v-model="active">
+    <van-tabbar v-model="active" :placeholder="true">
       <van-tabbar-item icon="search">标签</van-tabbar-item>
       <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" to="/best">标签</van-tabbar-item>
       <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
     </van-tabbar>
   </div>
