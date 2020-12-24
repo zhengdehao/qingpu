@@ -6,6 +6,8 @@ import 'vant/lib/index.css';
 
 //引入文件
 import "./assets/styles/reset.less";
+//引入iconfont.css
+// import "./assets/font/iconfont.css";
 import "amfe-flexible";
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
@@ -15,28 +17,31 @@ import {
   SwipeItem,
   Tabbar,
   TabbarItem,
+  Icon,
   Cell,
   CellGroup,
   NavBar,
   Tab,
   Tabs,
-  Icon,
+  Toast
 } from 'vant';
 
 
 
 const app = createApp(App);
+// import { Icon } from 'vant';
 
 //使用router
 app.use(router);
 
-//使用vant组件
+//啾啾组件
 app.use(Swipe);
 app.use(SwipeItem);
 app.use(Tabbar);
 app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
+app.use(Toast);
 
 //使用vant的icon
 app.use(Icon);
@@ -48,6 +53,8 @@ app.use(NavBar);
 //臻品分页栏
 app.use(Tab);
 app.use(Tabs);
+
+
 
 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <van-tabbar  route v-model="active" active-color="#29A2B5" inactive-color="#666666" placeholder>
-      <van-tabbar-item to="/home" >
+      <van-tabbar-item to="/firstpage" >
         <span>首页</span>
         <template #icon="props">
           <i class="iconfont icon-shouye"
@@ -16,7 +16,7 @@
         </template>
       </van-tabbar-item>
 
-      <van-tabbar-item to="/best">
+      <van-tabbar-item to="/best/recommend">
         <span >臻品</span>
         <template #icon="props">
           <i class="iconfont icon-kafei"></i>
