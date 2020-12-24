@@ -1,6 +1,6 @@
 <template>
   <div class="otherBox">
-    <van-cell title="当季主题推荐" is-link value="查看全部" />
+    <van-cell :title="hometitle" is-link value="查看全部" />
     <div class="otheritemBox">
       <ul class="otherListUl" :style="{width: otherWidth}">
         <li v-for="item in otherList">
@@ -16,7 +16,7 @@
 <script lang='ts'>
 import { defineComponent } from 'vue';
 export default defineComponent ({
-  props: [],
+  props: ["hometitle"],
   setup(props) {
     const otherList = [
       {
@@ -60,6 +60,11 @@ export default defineComponent ({
 <style lang='less' scoped>
 .otherBox {
   margin-bottom: 38px;
+  .van-cell--clickable {
+    font-size: 16px;
+    padding: 0;
+    padding-right: 15px;
+  }
   .otheritemBox {
       overflow: auto;
         &::-webkit-scrollbar {

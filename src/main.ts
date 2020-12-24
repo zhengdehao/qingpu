@@ -22,7 +22,8 @@ import {
   CellGroup,
   NavBar,
   Tab,
-  Tabs
+  Tabs,
+  Toast
 } from 'vant';
 
 
@@ -33,13 +34,14 @@ const app = createApp(App);
 //使用router
 app.use(router);
 
-//使用vant组件
+//啾啾组件
 app.use(Swipe);
 app.use(SwipeItem);
 app.use(Tabbar);
 app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
+app.use(Toast);
 
 
 //头部导航栏
