@@ -52,7 +52,6 @@ export default {
 .personal {
   overflow: hidden;
   header {
-   
     padding: 0 25px;
     background: lightblue;
     
