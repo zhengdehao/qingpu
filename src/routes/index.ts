@@ -12,15 +12,15 @@ const routes = [
     children: [
       {
         path: "/find",
-        component: () => import("../views/Find/index.vue")
+        component: () => import("../views/Home/Find/index.vue")
       },
       {
         path: "/best",
-        component: () => import("../views/Best/index.vue")
+        component: () => import("../views/Home/Best/index.vue")
       },
       {
         path: "/mine",
-        component: () => import("../views/Mine/index.vue")
+        component: () => import("../views/Home/Mine/index.vue")
       },
     ]
   },
