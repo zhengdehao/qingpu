@@ -1,32 +1,59 @@
 <template>
-  <div>
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+  <div class="footer">
+    <van-tabbar  route v-model="active" active-color="#29A2B5" inactive-color="#666666" placeholder>
+      <van-tabbar-item to="/home" >
+        <span>首页</span>
+        <template #icon="props">
+          <i class="iconfont icon-shouye"
+            ></i>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item to="/find">
+        <span>发现</span>
+        <template #icon="props">
+          <i class="iconfont icon-faxian2"></i>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item to="/best">
+        <span >臻品</span>
+        <template #icon="props">
+          <i class="iconfont icon-kafei"></i>
+        </template>
+      </van-tabbar-item>
+
+      <van-tabbar-item to="/mine">
+        <span>我的</span>
+        <template #icon="props">
+          <i class="iconfont icon-wode2"></i>
+        </template>
+      </van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { ref } from 'vue';
-export default defineComponent ({
+import { defineComponent } from "vue";
+import { ref } from "vue";
+export default defineComponent({
   data() {
-    return {};
+    return {
+      active:0
+    };
   },
   setup() {
     const active = ref(0);
-    const icon = {
-      active: 'https://img.yzcdn.cn/vant/user-active.png',
-      inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
-    };
     return {
-      icon,
-      active,
+      active
     };
   },
-})
+});
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.footer{
+  .iconfont{
+    font-size: 22px;
+  }
+}
+</style>
