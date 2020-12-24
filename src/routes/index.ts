@@ -36,6 +36,14 @@ const routes = [
       },
     ]
   },
+  {
+    path:"/tourdetail",
+    component:()=>import("../views/Detail/tour.vue")
+  },
+  {
+    path:"/bestdetail",
+    component:()=>import("../views/Detail/best.vue")
+  },
   {//404页面
     path:  "/:catchAll(.*)",
     component: () => import("../views/Errer/index.vue")
@@ -45,5 +53,5 @@ const routes = [
  
 export const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes
 })

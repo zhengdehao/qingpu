@@ -19,7 +19,8 @@ import {
   CellGroup,
   NavBar,
   Tab,
-  Tabs
+  Tabs,
+  Icon,
 } from 'vant';
 
 
@@ -37,6 +38,9 @@ app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
 
+//使用vant的icon
+app.use(Icon);
+
 
 //头部导航栏
 app.use(NavBar);
@@ -44,6 +48,7 @@ app.use(NavBar);
 //臻品分页栏
 app.use(Tab);
 app.use(Tabs);
+
 
 
 //挂载a'p'p

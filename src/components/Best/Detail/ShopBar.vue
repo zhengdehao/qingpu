@@ -1,5 +1,9 @@
 <template>
-  <div>发现</div>
+  <div class="shopcar">
+    <div>
+      <span><van-icon name="shopping-cart-o" /></span>
+    </div>
+  </div>
 </template>
 
 <script lang='ts'>
@@ -18,16 +22,15 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-  div{
-    background: white;
-    z-index: 100;
-    font-size: 18px;
-    line-height: 44px;
-    height: 44px;
+.shopcar{
+  position:fixed;
+  bottom:30px;
+  left:0;
+  right: 0;
+  padding:0 22px;
+  >div{
+    background: #EFEFEF;
     width: 100%;
-    text-align: center;
-    position:fixed;
-    top:0px;
-    left:0px;
   }
+}
 </style>

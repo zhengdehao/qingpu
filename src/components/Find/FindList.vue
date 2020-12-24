@@ -32,17 +32,17 @@ export default {
   computed: {},
 
   mounted() {
-   this.findlist();
-  },
-
-  methods: {
-    findlist(){
+    this.$nextTick(()=>{
        new BScroll(".findlist", {
         scrollX: true,
         scrollY: false,
         click: true
       });
-    }
+    })
+  },
+
+  methods: {
+   
   },
 };
 </script>
