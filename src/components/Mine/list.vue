@@ -64,18 +64,28 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-ul {
-  width: 325px;
-  margin: 0 auto;
-  .lili {
-    width: 100%;
-    height: 92px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #e8e8e8;
-    p{
-      align-self: center;
+.list {
+  ul {
+    width: 325px;
+    margin: 0 auto;
+    .lili {
+      width: 100%;
+      height: 92px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e8e8e8;
+      font-size: 19px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #333333;
+      p{
+        align-self: center;
+        &:nth-of-type(2){
+          font-size: 27px;
+        }
+      }
     }
   }
 }
+
 </style>
