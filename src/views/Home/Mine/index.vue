@@ -1,23 +1,27 @@
 <template>
   <div class="mine">
-    <section class="title">
-      <div>我的</div>
-    </section>
-    <personal />
+    <van-nav-bar
+      title="我的"
+      fixed=true
+      placeholder=true
+      class="title"
+      border=false
+    />
+    <!-- <personal /> -->
+    <unpersonal />
     <list />
-    <!-- <member /> -->
-    <!-- <myfooter /> -->
   </div>
 </template>
 
 <script lang="ts">
 //引入我的页面，头部个人信息组件
 import personal from "../../../components/Mine/personal.vue";
+import unpersonal from "../../../components/Mine/unpersonal.vue";
 //引入列表组件
 import list from "../../../components/Mine/list.vue";
-//引入footer组件
-// import myfooter from "../../../components/Common/MyFooter.vue";
 import { defineComponent } from 'vue';
+import { Toast } from 'vant';
+import "../../../assets/styles/style.less";
 export default defineComponent ({
   data() {
     return {};
@@ -25,6 +29,7 @@ export default defineComponent ({
 
   components: {
     personal,
+    unpersonal,
     list
     // member
     // myfooter
@@ -38,16 +43,4 @@ export default defineComponent ({
 });
 </script>
 <style lang="less" scoped>
-.title {
-    height: 50px;
-    padding: 0 25px;
-    text-align: center;
-    line-height: 50px;
-    background: lightgreen;
-    div {
-      font-size: 22px;
-      font-weight: 600;
-      // display: none;
-    }
-  }
 </style>
