@@ -42,7 +42,8 @@ const routes = [
   }
 ]
 
- 
+
+
 export const router = createRouter({
   history: createWebHashHistory(),
   routes,

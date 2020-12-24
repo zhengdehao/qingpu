@@ -6,6 +6,8 @@ import 'vant/lib/index.css';
 
 //引入文件
 import "./assets/styles/reset.less";
+//引入iconfont.css
+// import "./assets/font/iconfont.css";
 import "amfe-flexible";
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
@@ -15,6 +17,7 @@ import {
   SwipeItem,
   Tabbar,
   TabbarItem,
+  Icon,
   Cell,
   CellGroup,
   NavBar,
@@ -25,6 +28,7 @@ import {
 
 
 const app = createApp(App);
+// import { Icon } from 'vant';
 
 //使用router
 app.use(router);
@@ -44,6 +48,11 @@ app.use(NavBar);
 //臻品分页栏
 app.use(Tab);
 app.use(Tabs);
+
+//我的页面
+//引入箭头图标
+app.use(Icon);
+
 
 
 //挂载a'p'p
