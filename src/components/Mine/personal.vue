@@ -52,7 +52,7 @@ export default {
 .personal {
   overflow: hidden;
   header {
-    width: 100%;
+   
     padding: 0 25px;
     background: lightblue;
     

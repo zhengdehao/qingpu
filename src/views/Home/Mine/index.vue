@@ -39,7 +39,6 @@ export default defineComponent ({
 </script>
 <style lang="less" scoped>
 .title {
-    width: 100%;
     height: 50px;
     padding: 0 25px;
     text-align: center;
