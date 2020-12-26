@@ -1,26 +1,19 @@
 <template>
   <div>
     <i @click="back"><van-icon name="arrow-left" /></i>
-    <p>
-      <span> <van-icon name="like-o" /></span>
-      <span><share-icon/></span>
-    </p>
-      <h3>{{themetitle}}</h3> 
+    <h3>{{provinceName}}</h3> 
   </div>
 </template>
 
 <script lang='ts'>
-import ShareIcon from "./ShareIcon.vue"
 export default {
   data() {
     return {};
   },
  props:{
-    themetitle:String,
+    provinceName:String,
   },
-  components: {
-    ShareIcon
-  },
+  components: {},
 
   computed: {},
 
@@ -43,31 +36,17 @@ div{
  width: 100%;
  background:white;
  font-size:24px;
- overflow: hidden;
  i{
    padding-left: 5px;
    line-height: 44px;
-   float: left;
- }
- p{
-   line-height: 44px;
-   float:right;
-   padding-right: 15px;
-   span{
-     padding-left:10px;
-   }
  }
  h3{
    font-size: 18px;
    line-height: 44px;
-   width: 68%;
    position: fixed;
+   top:0px;
    left: 50%;
-   font-weight: normal;
-   transform: translateX(-55%);
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow:ellipsis;
+   transform:translateX(-50%);
  }
 }
 

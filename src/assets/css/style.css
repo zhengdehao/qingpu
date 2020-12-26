@@ -16,3 +16,25 @@
 .mine .van-hairline--bottom::after {
   display: none;
 }
+.van-dialog__message {
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  color: black;
+}
+.holiday .my-swipe .van-swipe-item {
+  height: 260px!important;
+}
+.holiday .checkin .van-icon-arrow {
+  vertical-align: middle;
+}
+.collapse .van-cell__title span {
+  line-height: 52px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.collapse .van-cell__right-icon {
+  font-size: 24px;
+  vertical-align: middle;
+  line-height: 52px;
+}

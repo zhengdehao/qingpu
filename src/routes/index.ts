@@ -36,14 +36,22 @@ const routes = [
       },
     ]
   },
-  {
+  {//人文之旅详情
     path:"/tourdetail",
     component:()=>import("../views/Detail/tour.vue")
   },
-  {
+  {//臻品详情
     path:"/bestdetail",
     component:()=>import("../views/Detail/best.vue")
   },
+  {//主页的热门景点详情
+    path:"/hotdetail",
+    component:()=>import("../views/Detail/hot.vue")
+  },
+    {//主页的人文假日详情
+      path:"/holidaydetail",
+      component:()=>import("../views/Detail/holiday.vue")
+    },
   {//404页面
     path:  "/:catchAll(.*)",
     component: () => import("../views/Errer/index.vue")

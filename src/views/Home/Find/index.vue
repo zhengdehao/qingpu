@@ -20,7 +20,6 @@ export default defineComponent({
   data() {
     return {
       flag: false as Boolean,
-      
     };
   },
 
@@ -40,7 +39,7 @@ export default defineComponent({
         bs.on('scroll', (position) => {
         this.flag=position.y<-50;
     });
-      })
+    })
   },
 
 });

@@ -6,9 +6,9 @@ import 'vant/lib/index.css';
 
 //引入文件
 import "./assets/styles/reset.less";
-//引入iconfont.css
-// import "./assets/font/iconfont.css";
+
 import "amfe-flexible";
+//引入iconfont.css
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
 //引入vant组件
@@ -23,7 +23,12 @@ import {
   NavBar,
   Tab,
   Tabs,
-  Toast
+  Toast,
+  ShareSheet,
+  Collapse, 
+  CollapseItem,
+  RadioGroup,
+  Radio 
 } from 'vant';
 
 
@@ -54,9 +59,16 @@ app.use(NavBar);
 app.use(Tab);
 app.use(Tabs);
 
+//使用分享弹框
+app.use(ShareSheet);
 
+// Collapse折叠面板组件
+app.use(Collapse);
+app.use(CollapseItem);
 
-
+//单选框
+app.use(RadioGroup);
+app.use(Radio);
 
 //挂载a'p'p
 app.mount('#app');
