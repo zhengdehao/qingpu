@@ -10,7 +10,22 @@
     }
   }
 }
+@button-color: #39828C;
+
 //我的页头部标题样式
+.mine{
+  .van-nav-bar__content {
+    height: 50px;
+    div {
+      font-size: 22px;
+      font-weight: 600;
+      // display: none;
+    }
+  }
+  .van-hairline--bottom::after {
+    display: none;
+  }
+}
 //我的页面中所有子页面头部样式
 .mypage-tip {
   width: 100%;
@@ -30,6 +45,45 @@
   display: none;
   color: red;
 }
-.ppp {
-  color: red;
+
+
+
+//臻品详情的客服提示框
+.van-dialog__message{
+  font-size: 18px;
+  padding-top:20px;
+  padding-bottom: 15px;
+  color:black;
+}
+
+//人文假日的banner高
+.holiday{
+  .my-swipe{
+    .van-swipe-item {
+      height:260px!important;
+    } 
+  }
+  .checkin{
+    .van-icon-arrow{
+      vertical-align: middle;
+    }
+  }
+  
+}  
+
+//Collapse折叠面板组件
+.collapse{
+    .van-cell__title{
+      span{
+        line-height: 52px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    } 
+    .van-cell__right-icon{
+      font-size: 24px;
+      vertical-align: middle;
+      line-height: 52px;
+    }
+  
 }

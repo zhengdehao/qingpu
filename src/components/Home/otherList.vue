@@ -1,12 +1,14 @@
 <template>
   <div class="otherBox">
-    <van-cell title="当季主题推荐" is-link value="查看全部" />
+    <van-cell :title="hometitle" is-link value="查看全部" :border="false" />
     <div class="otheritemBox">
-      <ul class="otherListUl" :style="{width: otherWidth}">
-        <li v-for="item in otherList">
-            <img src="" alt="">
-          <p>{{ item.describe }}</p>
-          <p>￥{{ item.price }}起</p>
+      <ul class="otherListUl">
+        <li v-for="item in homeListData">
+            <img :src="item.bgImg" alt="">
+          <p>{{ item.title }}</p>
+          <p v-if="item.type == 0">{{ item.price }}起</p>
+          <p v-else-if="item.type == 1">￥{{ item.price }}起</p>
+          <p v-else-if="item.type == 4">￥{{ item.price }}起</p>
         </li>
       </ul>
     </div>
@@ -16,50 +18,17 @@
 <script lang='ts'>
 import { defineComponent } from 'vue';
 export default defineComponent ({
-  props: [],
-  setup(props) {
-    const otherList = [
-      {
-        describe: "青普文化行馆·黄山秀里",
-        img: "图片",
-        price: 1488
-      },
-      {
-        describe: "青普文化行馆·八达岭瑞云",
-        img: "图片",
-        price: 2088
-      },
-      {
-        describe: "青普文化行馆·南靖土楼",
-        img: "图片",
-        price: 1288
-      },
-      {
-        describe: "青普文化行馆·扬州瘦西湖",
-        img: "图片",
-        price: 888
-      },
-      {
-        describe: "青普文化行馆·苏州木渎",
-        img: "图片",
-        price: 1288
-      },
-      {
-        describe: "青普文化行馆·丽江白沙",
-        img: "图片",
-        price: 1288
-      }
-    ];
-    let otherWidth = otherList.length * 167;
-
-
-    return { otherList, otherWidth };
-  }
+  props: ["hometitle","homeListData"]
 });
 </script>
 <style lang='less' scoped>
 .otherBox {
   margin-bottom: 38px;
+  .van-cell--clickable {
+    font-size: 16px;
+    padding: 0;
+    padding-right: 15px;
+  }
   .otheritemBox {
       overflow: auto;
         &::-webkit-scrollbar {
@@ -82,8 +51,8 @@ export default defineComponent ({
           border-radius: 3px;
         }
         p:nth-of-type(1) {
-          height: 12px;
-          line-height: 12px;
+          height: 30px;
+          line-height: 15px;
           font-size: 12px;
         }
         p:nth-of-type(2) {

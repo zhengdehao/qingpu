@@ -6,9 +6,9 @@ import 'vant/lib/index.css';
 
 //引入文件
 import "./assets/styles/reset.less";
-//引入iconfont.css
-// import "./assets/font/iconfont.css";
+
 import "amfe-flexible";
+//引入iconfont.css
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
 //引入vant组件
@@ -24,7 +24,13 @@ import {
   Tab,
   Tabs,
   Card,
-  Button
+  Button,
+  Toast,
+  ShareSheet,
+  Collapse, 
+  CollapseItem,
+  RadioGroup,
+  Radio 
 } from 'vant';
 
 
@@ -35,7 +41,7 @@ const app = createApp(App);
 //使用router
 app.use(router);
 
-//使用vant组件
+//啾啾组件
 app.use(Swipe);
 app.use(SwipeItem);
 app.use(Tabbar);
@@ -45,6 +51,10 @@ app.use(CellGroup);
 app.use(Card);
 app.use(Button);
 
+app.use(Toast);
+
+//使用vant的icon
+app.use(Icon);
 
 
 //头部导航栏
@@ -54,11 +64,16 @@ app.use(NavBar);
 app.use(Tab);
 app.use(Tabs);
 
-//我的页面
-//引入箭头图标
-app.use(Icon);
+//使用分享弹框
+app.use(ShareSheet);
 
+// Collapse折叠面板组件
+app.use(Collapse);
+app.use(CollapseItem);
 
+//单选框
+app.use(RadioGroup);
+app.use(Radio);
 
 //挂载a'p'p
 app.mount('#app');

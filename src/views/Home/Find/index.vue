@@ -1,18 +1,17 @@
 <template>
+<find-header v-if="flag"></find-header>
 <div class="wrapper">
   <div class="find">
-    <find-header v-if="local"></find-header>
-    <div>
       <h1>发现</h1>
       <find-list></find-list>
       <h2>人文周刊</h2>
       <humanity-list />
-    </div>
   </div>
 </div>
 </template>
 
 <script lang="ts">
+import BScroll from 'better-scroll';
 import FindList from "../../../components/Find/FindList.vue";
 import HumanityList from "../../../components/Find/HumanityList.vue";
 import FindHeader from "../../../components/Find/FindHeader.vue";
@@ -20,7 +19,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
-      local: false as Boolean,
+      flag: false as Boolean,
     };
   },
 
@@ -29,35 +28,31 @@ export default defineComponent({
     HumanityList,
     FindHeader,
   },
-
-  computed: {},
-
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    this.$nextTick(() => {
+        let bs = new BScroll(".wrapper", {
+          scrollX:false,
+          scrollY:true,
+          click:true,
+          probeType:3
+        });
+        bs.on('scroll', (position:any) => {
+        this.flag=position.y<-50;
+    });
+    })
   },
 
-  methods: {
-    handleScroll: function () {
-      // 滚动时，距离顶部的距离
-      var scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      if (scrollTop > 50) {
-        this.local = true;
-      } else {
-        this.local = false;
-      }
-    },
-  },
-  unmounted() {
-    //离开这个界面之后，删除，不然会有问题
-    window.removeEventListener("scroll", this.handleScroll);
-  },
 });
 </script>
 <style lang="less" scoped>
-// .wrapper{
-  
-// }
+.wrapper{
+  overflow: hidden;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:50px ;
+}
 .find {
   padding-top:30px;
   color: #333;

@@ -1,9 +1,9 @@
 <template>
     <div class="hotBox">
-      <ul class="hot" :style="{width: hotUlWidth}">
-      <li v-for="item in hotList">
-          <img src="" alt="">
-          <p>{{ item.cityname }}</p>
+      <ul class="hot">
+      <li v-for="item in homeHotList" :key="item.id">
+          <img :src="item.bgImg" alt="">
+          <p>{{ item.provinceName }}</p>
           <p>￥{{ item.price }}起</p>
       </li>
     </ul>
@@ -13,41 +13,15 @@
 <script lang='ts'>
 import { defineComponent } from 'vue';
 export default defineComponent ({
-  setup() {
-    const hotList = [
-      {
-        cityname: "江苏",
-        img: "图片",
-        price: 1488
-      },
-      {
-        cityname: "福建",
-        img: "图片",
-        price: 2088
-      },
-      {
-        cityname: "云南",
-        img: "图片",
-        price: 1288
-      },
-      {
-        cityname: "北京",
-        img: "图片",
-        price: 888
-      },
-      {
-        cityname: "黄山",
-        img: "图片",
-        price: 1288
-      }
-    ];
-    let hotUlWidth = hotList.length * 107;
-
-
-    return { hotList, hotUlWidth };
+  props: {
+    homeHotList: {
+      type:Array,
+      required: true
+    }
   }
 });
 </script>
+
 <style lang='less' scoped>
 .hotBox {
   overflow: auto;

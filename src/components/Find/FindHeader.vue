@@ -28,5 +28,6 @@ export default {
     text-align: center;
     position:fixed;
     top:0px;
+    left:0px;
   }
 </style>
