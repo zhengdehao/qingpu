@@ -1,12 +1,14 @@
 <template>
   <div class="otherBox">
-    <van-cell :title="hometitle" is-link value="查看全部" />
+    <van-cell :title="hometitle" is-link value="查看全部" :border="false" />
     <div class="otheritemBox">
       <ul class="otherListUl">
         <li v-for="item in homeListData">
             <img :src="item.bgImg" alt="">
           <p>{{ item.title }}</p>
-          <p>{{ item.price }}起</p>
+          <p v-if="item.type == 0">{{ item.price }}起</p>
+          <p v-else-if="item.type == 1">￥{{ item.price }}起</p>
+          <p v-else-if="item.type == 4">￥{{ item.price }}起</p>
         </li>
       </ul>
     </div>

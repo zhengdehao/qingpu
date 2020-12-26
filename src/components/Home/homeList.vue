@@ -1,6 +1,6 @@
 <template>
   <div class="homeListBox">
-    <van-cell title="当季主题推荐" is-link value="查看全部" />
+    <van-cell title="当季主题推荐" is-link value="查看全部" :border="false" />
     <div class="itemBox">
       <ul class="homeListUl">
         <li v-for="item in homeListData">
