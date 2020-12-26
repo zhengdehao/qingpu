@@ -50,7 +50,7 @@ export default defineComponent({
   },
   unmounted() {
     //离开这个界面之后，删除，不然会有问题
-    window.removeEventListener("scroll", this.handleSroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
 });
 </script>

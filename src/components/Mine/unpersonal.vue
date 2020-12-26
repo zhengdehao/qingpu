@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {};
@@ -30,6 +30,7 @@ export default {
 </script>
 <style lang='less' scoped>
 .unpersonal{
+  margin-top: 50px;
   header {
     height: 135px;
     padding: 0 25px;

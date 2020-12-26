@@ -6,13 +6,24 @@
   padding: 0;
   font-size: 12px;
 }
-.mine .van-nav-bar__content {
-  height: 50px;
-}
-.mine .van-nav-bar__content div {
+.mypage-tip {
+  width: 100%;
   font-size: 22px;
+  height: 49px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #f0efef;
+  z-index: 99;
   font-weight: 600;
 }
-.mine .van-hairline--bottom::after {
+.mypage-sco {
   display: none;
+  color: red;
+}
+.ppp {
+  color: red;
 }

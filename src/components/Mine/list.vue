@@ -23,32 +23,32 @@ export default {
         {
           title: "行程订单",
           name: "bag-o",
-          url: "/travel"
+          url: "/mine/travel"
         },
         {
           title: "臻品订单",
           name: "balance-list-o",
-          url: "/travel"
+          url: "/mine/products"
         },
         {
           title: "优惠券",
           name: "bill-o",
-          url: "/travel"
+          url: "/mine/cheap"
         },
         {
           title: "心愿单",
           name: "shop-collect-o",
-          url: "/travel"
+          url: "/mine/wish"
         },
         {
           title: "个人信息",
           name: "contact",
-          url: "/travel"
+          url: "/mine/me"
         },
         {
           title: "设置",
           name: "setting-o",
-          url: "/travel"
+          url: "/mine/set"
         },
       ]
     };

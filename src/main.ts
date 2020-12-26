@@ -22,7 +22,9 @@ import {
   CellGroup,
   NavBar,
   Tab,
-  Tabs
+  Tabs,
+  Card,
+  Button
 } from 'vant';
 
 
@@ -40,6 +42,9 @@ app.use(Tabbar);
 app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
+app.use(Card);
+app.use(Button);
+
 
 
 //头部导航栏
