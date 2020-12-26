@@ -2,9 +2,9 @@
   <div class="homeListBox">
     <van-cell title="当季主题推荐" is-link value="查看全部" />
     <div class="itemBox">
-      <ul class="homeListUl" :style="{width: ulWidth}">
+      <ul class="homeListUl">
         <li v-for="item in homeListData">
-            <img src="" alt="">
+            <img :src="item.bgImg" alt="">
         </li>
       </ul>
     </div>
@@ -14,31 +14,7 @@
 <script lang='ts'>
 import { defineComponent } from 'vue';
 export default defineComponent ({
-  setup() {
-    const homeListData = [
-      {
-        img: "图片"
-      },
-      {
-        img: "图片"
-      },
-      {
-        img: "图片"
-      },
-      {
-        img: "图片"
-      },
-      {
-        img: "图片"
-      },
-      {
-        img: "图片"
-      }
-    ];
-    let ulWidth= homeListData.length * 334 + 10;
-
-    return { homeListData, ulWidth };
-  }
+  props: ["homeListData"]
 });
 </script>
 <style lang='less' scoped>

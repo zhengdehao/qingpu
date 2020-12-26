@@ -1,5 +1,5 @@
 <template>
-  <van-swipe class="my-swipe" :autoplay="2000" @change="bannerChange">
+  <van-swipe class="my-swipe" :autoplay="2000"  @change="onChange">
     <van-swipe-item v-for="item in bannerList" :key="item">
       <img :src="item" alt="">
     </van-swipe-item>
@@ -15,14 +15,11 @@ export default defineComponent ({
   props: ["bannerList"],
   setup() {
     const current = ref(0);
-    const bannerChange = () => {
-      current.value++;
-      // if (current > 4){
-      //   current=0
-      // }
+    const onChange = (index) => {
+      current.value = index;
     }
 
-    return { current, bannerChange }
+    return { current, onChange }
   }
 })
 </script>
@@ -46,14 +43,14 @@ export default defineComponent ({
 }
 .custom-indicator {
   width: 100%;
-  height: 10px;
+  height: 3px;
   position: absolute;
-  bottom: -1px;
-  background: white;
+  bottom: 0px;
   border: none;
+  background: white;
 }
 progress::-webkit-progress-value {
-  background: red;
+  background: #39828c;
 }
 progress::-webkit-progress-bar {
   background: white;
