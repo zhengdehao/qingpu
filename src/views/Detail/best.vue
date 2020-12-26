@@ -7,7 +7,7 @@
      <!-- 臻品的详情内容 -->
      <div class="wrapper">
        <div>
-        <banner/>
+        <detail-banner/>
           <div class="content">
               <h2>{{themeTitle}}</h2>
               <div class="price">
@@ -37,7 +37,7 @@
 import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
 import DetailHeaderTwo from "../../components/Common/DetailHeaderTwo.vue";
 
-import banner from "../../components/Best/Detail/banner.vue";
+import DetailBanner from "../../components/Common/DetailBanner.vue";
 import BScroll from "better-scroll";
 
 //底部的客服购物条
@@ -48,7 +48,6 @@ export default {
     return {
       show: false,
       flag: false as Boolean,
-      goodsId: "1",
       themeTitle: "原创臻品|青普创|山海经图案多功能桌垫",
     };
   },
@@ -56,7 +55,7 @@ export default {
   components: {
     DetailHeaderOne,
     DetailHeaderTwo,
-    banner,
+    DetailBanner,
     ShopBar
   },
 
