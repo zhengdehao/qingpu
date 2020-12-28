@@ -4,6 +4,7 @@ import { router } from "./routes";
 import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
+import { store,key } from "./store/index" ;
 //引入文件
 import "./assets/styles/reset.less";
 
@@ -74,6 +75,9 @@ app.use(CollapseItem);
 //单选框
 app.use(RadioGroup);
 app.use(Radio);
+
+//vuex中使用支持ts
+app.use(store,key);
 
 //挂载a'p'p
 app.mount('#app');

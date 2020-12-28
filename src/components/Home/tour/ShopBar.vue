@@ -1,17 +1,12 @@
 <template>
   <div class="shopbar">
     <div>
-      <div @click="service">
+      <div @click="service" class="left">
         <span><van-icon name="service-o" /></span>
         <p>客服</p>
       </div>
-      <div>
-        <span><van-icon name="shopping-cart-o" /></span>
-        <p>购物车</p>
-      </div>
       <div class="shopbutton">
-        <div class="addCar">+ 购物车</div>
-        <div class="buy">立即购买</div>
+        <div class="buy">立即预定</div>
       </div>
     </div>
   </div>
@@ -58,10 +53,13 @@ export default {
   left: 0;
   right: 0;
   padding: 0 12px;
+  .left{
+    padding-left: 25px;
+  }
   > div {
     border-radius: 5px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background: #efefef;
     width: 100%;
@@ -76,8 +74,8 @@ export default {
   .shopbutton {
     display: flex;
     align-items: center;
+    padding-right: 25px;
   }
-  .addCar,
   .buy {
     width: 93px;
     height: 31px;

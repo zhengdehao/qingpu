@@ -101,16 +101,20 @@ export default {
   computed: {},
 
   mounted() {
-    this.$nextTick(() => {
-      let bs = new BScroll(".wrapper", {
-        scrollX: false,
-        scrollY: true,
-        click: true,
-        probeType: 3,
-      });
-      bs.on("scroll", (position) => {
-        this.flag = position.y < -50;
-      });
+    this.$nextTick();
+    let bs = new BScroll(".wrapper", {
+      scrollX: false,
+      scrollY: true,
+      click: true,
+      pullUpLoad: true,
+      probeType: 3,
+    });
+    bs.on("scroll", (position) => {
+      this.flag = position.y < -180;
+    });
+    bs.on("pullingUp", async () => {
+      await this.$nextTick();
+      bs.refresh();
     });
   },
 

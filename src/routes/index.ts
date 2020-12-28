@@ -67,23 +67,31 @@ const routes = [
     component: () => import("../components/Mine/list/wish.vue")
   },
   {//人文之旅详情
-    path:"/tourdetail",
-    component:()=>import("../views/Detail/tour.vue")
+    path: "/tourdetail",
+    component: () => import("../views/Detail/tour.vue")
   },
   {//臻品详情
-    path:"/bestdetail",
-    component:()=>import("../views/Detail/best.vue")
+    path: "/bestdetail",
+    component: () => import("../views/Detail/best.vue")
   },
   {//主页的热门景点详情
-    path:"/hotdetail",
-    component:()=>import("../views/Detail/hot.vue")
+    path: "/hotdetail",
+    component: () => import("../views/Detail/hot.vue")
   },
-    {//主页的人文假日详情
-      path:"/holidaydetail",
-      component:()=>import("../views/Detail/holiday.vue")
-    },
+  {//主页的人文假日详情
+    path: "/holidaydetail",
+    component: () => import("../views/Detail/holiday.vue")
+  },
+  {//主页溯心详情
+    path: "/heartdetail",
+    component: () => import("../views/Detail/heart.vue")
+  },
+  {//主页在地艺文体验详情
+    path: "/artdetail",
+    component: () => import("../views/Detail/art.vue")
+  },
   {//404页面
-    path:  "/:catchAll(.*)",
+    path: "/:catchAll(.*)",
     component: () => import("../views/Errer/index.vue")
   }
 ]

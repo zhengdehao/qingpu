@@ -1,6 +1,6 @@
 <template>
 <!--臻品商品的详情页面  -->
-  <div>
+  <div class="bestdetail">
     <!-- 随滑动高度切换切换的两个不同的头部 -->
     <detail-header-one v-if="!flag"></detail-header-one>
      <detail-header-two :themetitle="themeTitle" v-if="flag"></detail-header-two>
@@ -56,25 +56,28 @@ export default {
     DetailHeaderOne,
     DetailHeaderTwo,
     DetailBanner,
-    ShopBar
+    ShopBar,
   },
 
   computed: {},
 
   mounted() {
-    this.$nextTick(() => {
-      let bs = new BScroll(".wrapper", {
-        scrollX: false,
-        scrollY: true,
-        click: true,
-        probeType: 3,
-      });
-      bs.on("scroll", (position) => {
-        this.flag = position.y < -200;
-      });
+    this.$nextTick();
+    let bs = new BScroll(".wrapper", {
+      scrollX: false,
+      scrollY: true,
+      click: true,
+      pullUpLoad: true,
+      probeType: 3,
+    });
+    bs.on("scroll", (position) => {
+      this.flag = position.y < -200;
+    });
+    bs.on("pullingUp", async () => {
+      await this.$nextTick();
+      bs.refresh();
     });
   },
-
   methods: {},
 };
 </script>
