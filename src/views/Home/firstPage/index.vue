@@ -86,7 +86,7 @@ export default defineComponent ({
         Toast({
           message: "项目名称：青普\n\n项目参与人员\n郑德豪\n邱根国\n陈田\n吕慧笑\n竹文倩\n戴泓程\n\n以上排名不分先后顺序",
           icon: 'like-o',
-          duration: 5000
+          duration: 10000
         });
         sessionStorage.setItem('toastFlag', '1');
       }
