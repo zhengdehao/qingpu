@@ -62,7 +62,7 @@ const routes = [
     component: () => import("../components/Mine/list/travel.vue")
   },
   {
-    //我的页面心愿单路由
+    //我的页面购物车路由
     path: "/mine/wish",
     component: () => import("../components/Mine/list/wish.vue")
   },
