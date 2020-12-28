@@ -1,7 +1,7 @@
 <template>
     <div class="hotBox">
       <ul class="hot">
-      <li v-for="item in homeHotList" :key="item.id">
+      <li v-for="item in homeHotList" :key="item.id" @click="toHotList">
           <img :src="item.bgImg" alt="">
           <p>{{ item.provinceName }}</p>
           <p>￥{{ item.price }}起</p>
@@ -17,6 +17,11 @@ export default defineComponent ({
     homeHotList: {
       type:Array,
       required: true
+    }
+  },
+  methods : {
+    toHotList() {
+      this.$router.push("/hotlist")
     }
   }
 });

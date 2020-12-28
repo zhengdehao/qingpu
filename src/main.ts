@@ -4,6 +4,7 @@ import { router } from "./routes";
 import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
+import { store,key } from "./store/index" ;
 //引入文件
 import "./assets/styles/reset.less";
 
@@ -11,6 +12,8 @@ import "amfe-flexible";
 //引入iconfont.css
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
+import "./assets/styles/jiujiu.less";
+
 //引入vant组件
 import { 
   Swipe,
@@ -80,6 +83,9 @@ app.use(Field);
 
 //购物车使用商品滑块
 app.use(SwipeCell);
+
+//vuex中使用支持ts
+app.use(store,key);
 
 //挂载a'p'p
 app.mount('#app');

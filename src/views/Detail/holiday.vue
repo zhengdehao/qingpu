@@ -83,6 +83,8 @@
                       <van-radio name="2" checked-color="#388388"></van-radio>
                   </div>
                </van-radio-group>
+
+               
               </div>   
               <p class="button">立即体验</p>   
           </div>
@@ -114,7 +116,7 @@ export default {
   data() {
     return {
       flag: false as Boolean,
-      themeTitle: "青普文化馆~南靖土楼",
+      themeTitle: "",
     };
   },
 
@@ -131,14 +133,19 @@ export default {
   mounted() {
     this.$nextTick();
     let bs = new BScroll(".wrapper", {
-        scrollX: false,
-        scrollY: true,
-        click: true,
-        probeType: 3,
-      });
-      bs.on("scroll", (position) => {
-        this.flag = position.y < -180;
-      });
+      scrollX: false,
+      scrollY: true,
+      click: true,
+      pullUpLoad: true,
+      probeType: 3,
+    });
+    bs.on("scroll", (position) => {
+      this.flag = position.y < -180;
+    });
+    bs.on("pullingUp", async () => {
+      await this.$nextTick();
+      bs.refresh();
+    });
   },
 
   methods: {},
@@ -255,11 +262,11 @@ export default {
       }
     }
   }
-  .button{
+  .button {
     width: 330px;
     height: 40px;
     background: @button-color;
-    color:white;
+    color: white;
     font-size: 15px;
     text-align: center;
     line-height: 40px;

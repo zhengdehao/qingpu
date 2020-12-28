@@ -10,8 +10,19 @@
     }
   }
 }
+//按钮颜色
 @button-color: #39828C;
-
+//弹性盒水平垂直居中
+.center{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 //我的页头部标题样式
 .mine{
   .van-nav-bar__content {
@@ -56,19 +67,21 @@
   color:black;
 }
 
-//人文假日的banner高
-.holiday{
+//溯心、人文假日的banner高
+.bestdetail{
   .my-swipe{
     .van-swipe-item {
-      height:260px!important;
+      height:415px!important;
     } 
   }
+}
+//人文假日的右箭头的对其
+.holiday{
   .checkin{
     .van-icon-arrow{
       vertical-align: middle;
     }
   }
-  
 }  
 
 //Collapse折叠面板组件

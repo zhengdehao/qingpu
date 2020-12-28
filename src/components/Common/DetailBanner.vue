@@ -38,7 +38,7 @@ export default defineComponent({
 }
 .my-swipe .van-swipe-item {
   width: 100%;
-  height: 415px;
+  height: 260px;
   background: pink;
   text-align: center;
   line-height: 258px;
