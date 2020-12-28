@@ -57,11 +57,7 @@ export default defineComponent ({
   },
   
   mounted() {
-    Toast({
-      message: "项目名称\n青普\n项目参与人员\n郑德豪\n邱根国\n陈田\n吕慧笑\n竹文倩\n义距\n以上排名不分先后顺序",
-      icon: 'like-o',
-      duration:1000
-    });
+    this.toas();
     this.getBanner();
     this.getHomeList();
   },
@@ -82,6 +78,18 @@ export default defineComponent ({
       this.homeTripList = res.result.tripList;
 
       console.log( res.result);
+    },
+    //显示轻提示
+    toas() {
+      let toastFlag = sessionStorage.getItem('toastFlag');
+      if(!toastFlag) {
+        Toast({
+          message: "项目名称：青普\n\n项目参与人员\n郑德豪\n邱根国\n陈田\n吕慧笑\n竹文倩\n戴泓程\n\n以上排名不分先后顺序",
+          icon: 'like-o',
+          duration: 5000
+        });
+        sessionStorage.setItem('toastFlag', '1');
+      }
     }
   }
 });
@@ -101,9 +109,8 @@ export default defineComponent ({
     font-weight: bold;
   }
   //轻提示
-  .van-toast {
-    width: 300px;
-  }
+
+
 }
 
 </style>
