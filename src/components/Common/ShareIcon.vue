@@ -20,7 +20,7 @@ export default {
       { name: "复制链接", icon: "link" },
       { name: "分享海报", icon: "poster" }
     ];
-    const onSelect=(option)=>{
+    const onSelect=(option:any)=>{
           Toast(option.name);
       showShare.value = false;
     }

@@ -1,5 +1,6 @@
 <template>
-  <hot-header v-if="flag" :provinceName="provinceName" />
+  <van-icon name="arrow-left"  class="headarrows" v-if="!flag" @click="goback"/>
+  <hot-header v-show="flag" :provinceName="provinceName" />
   <div class="wrapper">
     <div class="hotdetail">
       <h1>{{ provinceName }}</h1>
@@ -108,13 +109,17 @@ export default {
         click: true,
         probeType: 3,
       });
-      bs.on("scroll", (position) => {
+      bs.on("scroll", (position:any) => {
         this.flag = position.y < -50;
       });
     });
   },
 
-  methods: {},
+  methods: {
+    goback(){
+      window.history.go(-1);
+    }
+  },
 };
 </script>
 <style lang='less' scoped>
@@ -186,5 +191,15 @@ export default {
       }
     }
   }
+}
+.headarrows {
+  width: 24px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  z-index: 999;
 }
 </style>

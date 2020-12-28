@@ -45,7 +45,7 @@ const routes = [
     component:()=>import("../views/Detail/best.vue")
   },
   {//主页的热门景点详情
-    path:"/hotdetail",
+    path:"/hotlist",
     component:()=>import("../views/Detail/hot.vue")
   },
     {//主页的人文假日详情
