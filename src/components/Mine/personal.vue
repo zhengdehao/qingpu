@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import urls from "../../../public/images/personal.png";
-import url from "../../../public/personal-bg.png";
+import urls from "../../../src/assets/images/personal.png";
+import url from "../../../src/assets/images/personal-bg.png";
 export default {
   data() {
     return {
@@ -51,6 +51,7 @@ export default {
 <style lang='less' scoped>
 .personal {
   overflow: hidden;
+  margin-top: 50px;
   header {
     padding: 0 25px;
     .cont {

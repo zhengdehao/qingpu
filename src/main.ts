@@ -25,6 +25,8 @@ import {
   NavBar,
   Tab,
   Tabs,
+  Card,
+  Button,
   Toast,
   ShareSheet,
   Collapse, 
@@ -48,6 +50,9 @@ app.use(Tabbar);
 app.use(TabbarItem);
 app.use(Cell);
 app.use(CellGroup);
+app.use(Card);
+app.use(Button);
+
 app.use(Toast);
 
 //使用vant的icon

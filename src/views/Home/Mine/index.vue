@@ -1,16 +1,12 @@
 <template>
-  <div class="mine">
-    <van-nav-bar
-      title="我的"
-      fixed=true
-      placeholder=true
-      class="title"
-      border=false
-    />
+<div class="mypage">
+  <div :class="[number>=50?'mypage-tip':'mypage-sco']">我的</div>
     <!-- <personal /> -->
     <unpersonal />
     <list />
-  </div>
+  <!-- </div> -->
+</div>
+  
 </template>
 
 <script lang="ts">
@@ -21,10 +17,11 @@ import unpersonal from "../../../components/Mine/unpersonal.vue";
 import list from "../../../components/Mine/list.vue";
 import { defineComponent } from 'vue';
 import { Toast } from 'vant';
-import "../../../assets/styles/style.less";
 export default defineComponent ({
   data() {
-    return {};
+    return {
+      number:0,
+    };
   },
 
   components: {
@@ -37,10 +34,42 @@ export default defineComponent ({
 
   computed: {},
 
-  mounted() {},
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);  
+  },
 
-  methods: {}
+  methods: {
+    handleScroll() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||document.body.scrollTop;
+      this.number = scrollTop;
+    }
+  },
+  unmounted() {
+
+  },
 });
 </script>
 <style lang="less" scoped>
+@import "../../../assets/styles/style.less";
+// .tip {
+//     width: 100%;
+//     height: 49px;
+//     font-size: 22px;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     background: #fff;
+//     line-height: 50px;
+//     text-align: center;
+//     border-bottom: 1px solid rgb(240, 239, 239);
+//     z-index: 99;
+//     font-weight: 600;
+//   }
+//   .sco {
+//     display: none;
+//   }
+.page {
+  .mypage-tip();
+  .mypage-sco();
+}
 </style>
