@@ -1,8 +1,13 @@
 <template>
 <div class="mypage">
   <div :class="[number>=50?'mypage-tip':'mypage-sco']">我的</div>
-    <!-- <personal /> -->
-    <unpersonal />
+    <template v-if="isLogin">
+      <personal />
+    </template>
+    <template v-else-if="!isLogin">
+      <unpersonal />
+    </template>
+
     <list />
   <!-- </div> -->
 </div>
@@ -21,6 +26,7 @@ export default defineComponent ({
   data() {
     return {
       number:0,
+      isLogin: false
     };
   },
 
@@ -32,16 +38,24 @@ export default defineComponent ({
     // myfooter
   },
 
-  computed: {},
+  computed: {
+
+  },
 
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);  
+    window.addEventListener("scroll", this.handleScroll);
+    console.log(1);
+    this.isLoginChange();
   },
 
   methods: {
     handleScroll() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||document.body.scrollTop;
       this.number = scrollTop;
+    },
+    isLoginChange() {
+      if(localStorage.getItem("phone")) { this.isLogin = true }
+      else { this.isLogin = false}
     }
   },
   unmounted() {

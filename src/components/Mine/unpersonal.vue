@@ -2,7 +2,7 @@
   <!-- 登录前 -->
   <div class="unpersonal">
     <header>
-      <section class="cont">
+      <section class="cont" @click="intoLogin">
         <div class="lef">
           <h2>请登录</h2>
         </div>
@@ -26,7 +26,11 @@ export default {
 
   mounted() {},
 
-  methods: {}
+  methods: {
+    intoLogin() {
+      this.$router.push({path: "/login"})
+    }
+  }
 };
 </script>
 <style lang='less' scoped>
