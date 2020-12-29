@@ -51,6 +51,51 @@
   display: none;
   color: red;
 }
+.haswish .goods-card {
+  margin: 0;
+  background-color: #fff;
+}
+.haswish .delete-button {
+  height: 100%;
+}
+.haswish .update-button {
+  height: 100%;
+  background: #39828C;
+}
+.haswish .van-swipe-cell__left {
+  padding: 40px 10px;
+}
+.haswish .van-swipe-cell__wrapper {
+  margin-left: 40px;
+}
+.hasaddress .van-address-item .van-radio__icon--checked .van-icon {
+  background: #39828C;
+  border-color: #39828C;
+}
+.hasaddress .van-button--danger {
+  background: #39828C;
+  border-color: #39828C;
+}
+.addressedit .addresseditmain .van-button--danger {
+  background: #39828C;
+  border-color: #39828C;
+}
+.updatemsg .van-cell__left-icon {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 25px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #39828C;
+  overflow: hidden;
+}
+.updatemsg .van-cell__left-icon .van-icon__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .van-dialog__message {
   font-size: 18px;
   padding-top: 20px;

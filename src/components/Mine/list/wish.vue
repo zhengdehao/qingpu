@@ -1,4 +1,5 @@
 <template>
+  <!-- 购物车 -->
   <div class="wish">
     <commhead class="fath"/>
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">购物车</div>

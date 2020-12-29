@@ -1,26 +1,27 @@
 <template>
-  <!-- 添加常用信息 -->
-  <div class="me">
+  <div class="notice">
     <commhead class="fath"/>
-    <div :class="[number>=50?'mypage-tip':'mypage-sco']">常用信息</div>
-    <div class="memain">
-      <h1>常用信息</h1>
-      <van-tabs v-model="active" color="#39828C">
-        <van-tab title="人员信息"></van-tab>
-        <van-tab title="签证"></van-tab>
-      </van-tabs>
+    <div :class="[number>=50?'mypage-tip':'mypage-sco']">通知管理</div>
+    <div class="noticemain">
+      <h1>通知管理</h1>
+      <van-cell center title="允许青普向您发送通知" size="large" >
+        <template #right-icon>
+          <van-switch v-model="checked" size="24" />
+        </template>
+      </van-cell>
     </div>
-    <van-button type="primary" size="large" color="#39828C">添加</van-button>
   </div>
 </template>
 
-<script lang="ts">
-//引入头部导航条
-import commhead from "./commhead.vue";
+<script>
+import { defineComponent,ref,reactive } from "vue";
+
+import commhead from "../commhead.vue";
 export default {
   data() {
     return {
       number:0,
+      checked: true,
     };
   },
 
@@ -31,9 +32,8 @@ export default {
   computed: {},
 
   mounted() {
-    window.addEventListener("scroll", this.handleScroll); 
+    window.addEventListener("scroll", this.handleScroll);
   },
-  
 
   methods: {
     handleScroll() {
@@ -44,14 +44,12 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-@import "../../../assets/styles/style.less";
-
-.me {
+.notice {
   padding-top: 50px;
   .fath {
     position: fixed;
   }
-  .memain {
+  .noticemain {
     h1 {
       padding: 0 25px;
       margin-top: 46px;
@@ -62,11 +60,6 @@ export default {
       color: #333333;
       margin-bottom: 20px;
     }
-  }
-  .van-button--large {
-    position: fixed;
-    bottom: 0;
-    left: 0;
   }
 }
 </style>
