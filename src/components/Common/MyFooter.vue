@@ -16,7 +16,7 @@
         </template>
       </van-tabbar-item>
 
-      <van-tabbar-item to="/best/recommend">
+      <van-tabbar-item to="/best">
         <span >臻品</span>
         <template #icon="props">
           <i class="iconfont icon-kafei"></i>

@@ -1,10 +1,17 @@
 .best-header .van-nav-bar__content {
   height: 44px;
 }
+.best-header .van-tabs__nav {
+  padding-left: 5px;
+}
 .best-header .van-tabs__nav .van-tab {
   width: 74px;
   padding: 0;
   font-size: 12px;
+}
+.best-header .van-tabs__nav .van-tab:first-child {
+  width: auto;
+  margin-right: 27px;
 }
 .center {
   display: flex;
@@ -65,4 +72,7 @@
   font-size: 24px;
   vertical-align: middle;
   line-height: 52px;
+}
+.van-tab__pane {
+  padding-top: 17px;
 }

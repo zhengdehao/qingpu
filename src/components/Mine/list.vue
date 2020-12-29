@@ -36,7 +36,7 @@ export default {
           url: "/mine/cheap"
         },
         {
-          title: "心愿单",
+          title: "购物车",
           name: "shop-collect-o",
           url: "/mine/wish"
         },

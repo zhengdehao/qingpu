@@ -33,6 +33,30 @@ export default {
         num:2,
         price:3000,
         thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+      },
+      {
+        title:"hahaha",
+        num:2,
+        price:3000,
+        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+      },
+      {
+        title:"hahaha",
+        num:2,
+        price:3000,
+        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+      },
+      {
+        title:"hahaha",
+        num:2,
+        price:3000,
+        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+      },
+      {
+        title:"hahaha",
+        num:2,
+        price:3000,
+        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
       }
     ])
 
@@ -41,7 +65,7 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-// .hasproducts{
-
-// }
+.hasproducts{
+  margin-bottom: 60px;
+}
 </style>

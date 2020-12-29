@@ -34,13 +34,14 @@ import {
   CollapseItem,
   RadioGroup,
   Radio,
-  PullRefresh  
+  PullRefresh,  
+  Field,
+  SwipeCell
 } from 'vant';
 
 
 
 const app = createApp(App);
-// import { Icon } from 'vant';
 
 //使用router
 app.use(router);
@@ -54,6 +55,7 @@ app.use(Cell);
 app.use(CellGroup);
 app.use(Card);
 app.use(Button);
+
 
 app.use(Toast);
 
@@ -78,6 +80,10 @@ app.use(CollapseItem);
 //单选框
 app.use(RadioGroup);
 app.use(Radio);
+app.use(Field);
+
+//购物车使用商品滑块
+app.use(SwipeCell);
 
 //
 app.use(PullRefresh);
