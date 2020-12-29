@@ -35,7 +35,16 @@ import {
   RadioGroup,
   Radio,
   Field,
-  SwipeCell
+  SwipeCell,
+  Checkbox,
+  CheckboxGroup,
+  SubmitBar,
+  AddressList,
+  AddressEdit,
+  Switch,
+  Popup,
+  Picker
+  // Dialog
 } from 'vant';
 
 
@@ -54,6 +63,8 @@ app.use(Cell);
 app.use(CellGroup);
 app.use(Card);
 app.use(Button);
+app.use(Popup);
+app.use(Picker);
 
 
 app.use(Toast);
@@ -83,6 +94,14 @@ app.use(Field);
 
 //购物车使用商品滑块
 app.use(SwipeCell);
+app.use(Checkbox);
+app.use(CheckboxGroup);
+app.use(SubmitBar);
+//联系地址卡片
+app.use(AddressList);
+app.use(Switch);
+app.use(AddressEdit);
+// app.use(Dialog);
 
 //vuex中使用支持ts
 app.use(store,key);

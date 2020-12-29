@@ -1,105 +1,117 @@
 <template>
   <div class="haswish">
-    
-    <van-swipe-cell v-for="item in proList">
-      <template #left>
-        <van-button square type="primary" text="选择" />
+    <van-checkbox-group v-model="state.checked" ref="checkboxGroup">
+      <template v-for="item in state.checkedList">
+        <van-swipe-cell >
+          <template #left>
+            <van-checkbox :name="item" />
+          </template>
+          <van-card
+            :key="item.title"
+            :num="item.num"
+            :price="item.price"
+            :title="item.title"
+            :thumb="item.thumb"
+          />
+          <template #right>
+            <van-button square text="删除" type="danger" class="delete-button" />
+          </template>
+        </van-swipe-cell>
       </template>
-      <van-card
-        
-        :key="item.thumb"
-        :num="item.num"
-        :price="item.price"
-        :title="item.title"
-        :thumb="item.thumb"
-      />
-      <template #right>
-        <van-button square type="danger" text="删除" />
-      </template>
-    </van-swipe-cell>
-    <!-- <van-swipe-cell>
-      <van-card
-        num="2"
-        price="2.00"
-        desc="描述信息"
-        title="商品标题"
-        class="goods-card"
-        thumb="https://img.yzcdn.cn/vant/cat.jpeg"
-      />
-      <template #right>
-        <van-button square text="删除" type="danger" class="delete-button" />
-      </template>
-    </van-swipe-cell> -->
+    </van-checkbox-group>
 
+    <van-submit-bar :price="allPrice" button-text="提交订单" @submit="onSubmit">
+      <van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
+    </van-submit-bar>
   </div>
 </template>
 
 <script>
-import { defineComponent,reactive } from "vue";
+import { defineComponent,reactive,ref,computed } from "vue";
 export default {
   setup() {
-    const proList = reactive([
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      }
-    ]);
+    const state = reactive({
+      checked: ref([]),
+      checkedList: [
+        {
+          title:"hahaha",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"yayay",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"ccccc",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"nnnnn",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"mmmm",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"ggggg",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        },
+        {
+          title:"lllll",
+          num:2,
+          price:3000,
+          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        }
+      ]
+    })
+    
+   
+    const checkboxGroup = ref(null);
+
+    const checkAll = () => {
+      checkboxGroup.value.toggleAll(true);
+    }
+    // function allPrice() {
+    //   // console.log(state.sum)
+    //   // state.sum = state.sum + price*100;
+    //   // console.log(state.sum);
+    //   console.log(state.checked);
+    //   state.sum = 0;
+    //   state.checked.forEach(item => {
+    //     state.sum += item.price;
+    //   })
+    // }
+    const allPrice = computed(() => state.checked.reduce((sum, item) => {
+      return sum += item.price*100
+    }, 0))
+
     return { 
-      proList
+      state,
+      allPrice,
+      checkAll,
+      checkboxGroup
     };
   }
 };
 </script>
 <style lang='less' scoped>
+@import "../../../assets/styles/style.less";
 .haswish{
   margin-bottom: 60px;
-  .goods-card {
-    margin: 0;
-    background-color: white;
-  }
-
-  .van-button--danger::before {
-    height: 100%;
-    background:pink!important;
-  }
+  
 }
 
 </style>

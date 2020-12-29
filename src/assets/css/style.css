@@ -44,6 +44,35 @@
   display: none;
   color: red;
 }
+.haswish .goods-card {
+  margin: 0;
+  background-color: #fff;
+}
+.haswish .delete-button {
+  height: 100%;
+}
+.haswish .update-button {
+  height: 100%;
+  background: #39828C;
+}
+.haswish .van-swipe-cell__left {
+  padding: 40px 10px;
+}
+.haswish .van-swipe-cell__wrapper {
+  margin-left: 40px;
+}
+.hasaddress .van-address-item .van-radio__icon--checked .van-icon {
+  background: #39828C;
+  border-color: #39828C;
+}
+.hasaddress .van-button--danger {
+  background: #39828C;
+  border-color: #39828C;
+}
+.addressedit .addresseditmain .van-button--danger {
+  background: #39828C;
+  border-color: #39828C;
+}
 .van-dialog__message {
   font-size: 18px;
   padding-top: 20px;
