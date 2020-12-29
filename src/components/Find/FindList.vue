@@ -2,7 +2,7 @@
 <div style="overflow-x:hidden">
   <div class="findlist">
     <ul>
-      <li>
+      <li @click="change">
         <div>
           <p>会员&共建人</p>
           <h3>1月青浦雅集</h3>
@@ -42,7 +42,9 @@ export default {
   },
 
   methods: {
-   
+   change(){
+     this.$router.push(`/elegant/2`)
+   }
   },
 };
 </script>

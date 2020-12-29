@@ -33,7 +33,8 @@ import {
   Collapse, 
   CollapseItem,
   RadioGroup,
-  Radio 
+  Radio,
+  PullRefresh  
 } from 'vant';
 
 
@@ -77,6 +78,9 @@ app.use(CollapseItem);
 //单选框
 app.use(RadioGroup);
 app.use(Radio);
+
+//
+app.use(PullRefresh);
 
 //vuex中使用支持ts
 app.use(store,key);

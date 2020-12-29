@@ -36,6 +36,14 @@ const routes = [
       }
     ]
   },
+   {//发现的雅集页面
+    path: "/elegant/:id",
+    component: () => import("../views/Home/Find/ElegantCollection.vue")
+  },
+  {//发现的雅集页面
+    path: "/findrecommend",
+    component: () => import("../views/Home/Find/recommend.vue")
+  },
   {
     //我的页面优惠券路由
     path: "/mine/cheap",
@@ -75,7 +83,7 @@ const routes = [
     component: () => import("../views/Detail/best.vue")
   },
   {//主页的热门景点详情
-    path: "/hotdetail",
+    path: "/hotlist",
     component: () => import("../views/Detail/hot.vue")
   },
   {//主页的人文假日详情
