@@ -22,13 +22,13 @@ const routes = [
       {//跳转臻品
         path: "/best",
         component: () => import("../views/Home/Best/index.vue"),
-        redirect: "/best/recommend",
-        children: [
-          {
-            path: "recommend",
-            component: () => import("../views/Home/Best/recommend/index.vue")
-          }
-        ]
+        // redirect: "/best/recommend",
+        // children: [
+        //   {
+        //     path: "recommend",
+        //     component: () => import("../views/Home/Best/recommend/index.vue")
+        //   }
+        // ]
       },
       {//跳转我的
         path: "/mine",
@@ -71,8 +71,9 @@ const routes = [
     component: () => import("../views/Detail/tour.vue")
   },
   {//臻品详情
-    path: "/bestdetail",
-    component: () => import("../views/Detail/best.vue")
+    path: "/bestdetail/:id",
+    component: () => import("../views/Detail/best.vue"),
+    props: true
   },
   {//主页的热门景点详情
     path: "/hotdetail",
