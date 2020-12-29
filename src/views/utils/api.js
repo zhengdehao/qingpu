@@ -3,5 +3,5 @@ import http from "./http";
 export const getBannerApi = params => http.get("home/banner", params);
 //请求首页列表渲染
 export const getHomeListApi = params => http.get("home/recommend", params);
-//请求臻品页面
-export const getGoodsListApi = params => http.post("/goods", params);
+//请求首页列表渲染
+export const getHeartListApi = params => http.post("home/detail", params);

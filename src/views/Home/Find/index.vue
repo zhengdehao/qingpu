@@ -1,25 +1,71 @@
 <template>
 <find-header v-if="flag"></find-header>
 <div class="wrapper">
-  <div class="find">
-      <h1>发现</h1>
-      <find-list></find-list>
-      <h2>人文周刊</h2>
-      <humanity-list />
-  </div>
+   <van-pull-refresh
+      v-model="state.loading"
+      :head-height="100"
+      @refresh="onRefresh"
+    >
+    <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
+      <template #pulling="props">
+        <img
+          class="doge"
+          src="https://img.yzcdn.cn/vant/doge.png"
+          :style="{ transform: `scale(${props.distance / 80})` }"
+        />
+      </template>
+      <!-- 释放提示 -->
+      <template #loosing>
+        <img class="doge" src="https://img.yzcdn.cn/vant/doge.png" />
+      </template>
+      <!-- 加载提示 -->
+      <template #loading>
+        <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
+      </template>
+
+      <div class="find">
+          <h1>发现</h1>
+          <find-list></find-list>
+          <h2>人文周刊</h2>
+          <humanity-list />
+      </div>
+    </van-pull-refresh>
 </div>
 </template>
 
 <script lang="ts">
-import BScroll from 'better-scroll';
+import BScroll from "better-scroll";
 import FindList from "../../../components/Find/FindList.vue";
 import HumanityList from "../../../components/Find/HumanityList.vue";
 import FindHeader from "../../../components/Find/FindHeader.vue";
 import { defineComponent } from "vue";
+import { reactive } from "vue";
+import { Toast } from "vant";
 export default defineComponent({
+    setup() {
+    const state = reactive({
+      loading: false,
+    });
+    const onRefresh = () => {
+      setTimeout(() => {
+        Toast.loading({
+          forbidClick: true,
+          loadingType: "spinner",
+          duration:1000
+        });
+        state.loading = false;
+      }, 1000);
+    };
+
+    return {
+      state,
+      onRefresh,
+    };
+  },
   data() {
     return {
       flag: false as Boolean,
+
     };
   },
 
@@ -30,31 +76,36 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
-        let bs = new BScroll(".wrapper", {
-          scrollX:false,
-          scrollY:true,
-          click:true,
-          probeType:3
-        });
-        bs.on('scroll', (position:any) => {
-        this.flag=position.y<-50;
+      let bs = new BScroll(".wrapper", {
+        scrollX: false,
+        scrollY: true,
+        click: true,
+        probeType: 3,
+      });
+      bs.on("scroll", (position: any) => {
+        this.flag = position.y < -50;
+      });
     });
-    })
   },
-
 });
 </script>
 <style lang="less" scoped>
-.wrapper{
+.wrapper {
   overflow: hidden;
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:50px ;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+}
+.doge {
+  width: 140px;
+  height: 72px;
+  margin-top: 8px;
+  border-radius: 4px;
 }
 .find {
-  padding-top:30px;
+  padding-top: 30px;
   color: #333;
   h1 {
     padding-left: 16px;

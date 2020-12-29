@@ -130,7 +130,7 @@ export default {
 
   computed: {},
 
-  mounted() {
+  mounted() {   
     this.$nextTick();
     let bs = new BScroll(".wrapper", {
       scrollX: false,
@@ -139,6 +139,7 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
+   
     bs.on("scroll", (position) => {
       this.flag = position.y < -180;
     });

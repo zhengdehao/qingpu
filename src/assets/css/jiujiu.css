@@ -1,0 +1,6 @@
+.van-toast {
+  width: 200px !important;
+}
+.van-toast .van-icon {
+  font-size: 60px;
+}
