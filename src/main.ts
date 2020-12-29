@@ -4,7 +4,6 @@ import { router } from "./routes";
 import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
-import { store,key } from "./store/index" ;
 //引入文件
 import "./assets/styles/reset.less";
 
@@ -13,6 +12,9 @@ import "amfe-flexible";
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
 import "./assets/styles/jiujiu.less";
+
+//引入Vuex
+import { store, key } from './store'
 
 //引入vant组件
 import { 
@@ -93,3 +95,5 @@ app.use(store,key);
 
 //挂载a'p'p
 app.mount('#app');
+
+
