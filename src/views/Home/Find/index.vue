@@ -27,7 +27,7 @@
           <h1>发现</h1>
           <find-list></find-list>
           <h2>人文周刊</h2>
-          <humanity-list />
+          <humanity-list :humanityList="humanityList"/>
       </div>
     </van-pull-refresh>
 </div>
@@ -46,6 +46,7 @@ export default defineComponent({
     const state = reactive({
       loading: false,
     });
+    let humanityList=[] as Array<string>;
     const onRefresh = () => {
       setTimeout(() => {
         Toast.loading({
@@ -60,15 +61,15 @@ export default defineComponent({
     return {
       state,
       onRefresh,
+      humanityList
     };
+    
   },
   data() {
     return {
       flag: false as Boolean,
-
     };
   },
-
   components: {
     FindList,
     HumanityList,
@@ -80,14 +81,23 @@ export default defineComponent({
         scrollX: false,
         scrollY: true,
         click: true,
+        pullUpLoad: true,
         probeType: 3,
+        bounce:{
+          top:false
+        }
       });
       bs.on("scroll", (position: any) => {
         this.flag = position.y < -50;
       });
+     bs.on("pullingUp", async () => {
+      await this.$nextTick();
+       bs.refresh();
+    });
     });
   },
-});
+  
+})
 </script>
 <style lang="less" scoped>
 .wrapper {
