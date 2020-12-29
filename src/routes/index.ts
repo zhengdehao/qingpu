@@ -41,7 +41,7 @@ const routes = [
     component: () => import("../views/Home/Find/ElegantCollection.vue")
   },
   {//发现的雅集页面
-    path: "/findrecommend",
+    path: "/findrecommend/:id",
     component: () => import("../views/Home/Find/recommend.vue")
   },
   {

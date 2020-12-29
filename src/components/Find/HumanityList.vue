@@ -1,9 +1,7 @@
 <template>
   <div class="list">
     <ul>
-      <li v-for="item in humanityList"><img :src="item" alt=""></li>
-      <li><img src="http://42.192.155.18:3180/images/banner/banner_02.jpg" alt=""></li>
-      <li><img src="http://42.192.155.18:3180/images/banner/banner_02.jpg" alt=""></li>
+      <li @click="change(item.id)" v-for="item in cultureList"><img :src="item.indexImg" alt=""/></li>
     </ul>
   </div>
 </template>
@@ -11,22 +9,24 @@
 <script lang='ts'>
 import BScroll from 'better-scroll';
 export default {
-  props:["humanityList"],
+  props:["cultureList"],
   data() {
     return {
-      
+      id:""
     };
   },
 
   components: {},
 
   computed: {},
-
   mounted() {
- 
   },
 
-  methods: {}
+  methods: {
+    change(id){
+      this.$router.push(`/findrecommend/${id}`)
+    }
+  }
   };
 </script>
 <style lang='less' scoped>
@@ -37,13 +37,14 @@ export default {
     padding-left:20px ;
     li {
       width: 335px;
+      height: 448px;
       border-radius:5px;
       margin: 16px 0;
       overflow: hidden;
         }
         img{
-          min-width: 100%;
-          min-height: 100%;
+          width: 100%;
+          height: 100%;
         }
       }
   }
