@@ -5,7 +5,7 @@
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">管理资料</div>
     <div class="updatemsgmain">
       <h1>管理资料</h1>
-      <van-cell center title="头像" value="修改" label="内容" is-link />
+      <van-cell center title="头像" value="修改" icon="https://img.yzcdn.cn/vant/leaf.jpg" v-model="fileList" is-link />
       <van-cell center title="昵称" label="哈哈哈" />
       <van-cell center title="性别" :label="showSex" is-link @click="showPopup"/>
       <van-popup v-model:show="show" position="bottom" :style="{ height: '30%' }">
@@ -42,14 +42,20 @@ export default {
     const onCancel = () => {
       show.value = false;
     };
-    
+    const fileList = ref([
+      { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+      // Uploader 根据文件后缀来判断是否为图片文件
+      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+      { url: 'https://cloud-image', isImage: true },
+    ]);
     return {
       show,
       showPopup,
       columns,
       onCancel,
       onConfirm,
-      showSex
+      showSex,
+      fileList
     };
   },
   data() {
@@ -103,7 +109,8 @@ export default {
   .van-cell {
     height: 92px;
     font-size: 19px;
-    padding: 25px;
+    padding: 20px 30px 60px;
+    position: relative;
   }
 }
 </style>
