@@ -137,9 +137,9 @@ export default {
       // res = JSON.parse(JSON.stringify(res));
       // console.log(res.result);
       // console.log(res.result.holidayList.filter(item => item.provinceName == this.provinceName))
-      // this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
-      // this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
-      // this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
+      this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
+      this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
+      this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
       // console.log(this.detailList);
     }
   },
