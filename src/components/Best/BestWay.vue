@@ -3,8 +3,11 @@
     <h3>臻选攻略</h3>
     <div class="waylist">
       <ul>
-        <li v-for="item in wayList" :key="item">
-          <img src="" alt="">
+        <li>
+          <img src="../../assets/images/best/zpgl01.jpg" alt="" style="height:100%;width:100%">
+        </li>
+        <li>
+          <img src="../../assets/images/best/zpgl02.jpg" alt="" style="height:100%;width:100%">
         </li>
       </ul>
     </div>

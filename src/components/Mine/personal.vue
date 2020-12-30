@@ -2,7 +2,7 @@
   <!-- 登录后 -->
   <div class="personal">
     <header>
-      <section class="cont">
+      <section class="cont" @click="toUpdateUser">
         <div class="lef">
           <h2>{{ userInfo.username }}</h2>
           <span>{{userInfo.score}} 积分 ></span>
@@ -49,7 +49,11 @@ export default {
 
   mounted() {},
 
-  methods: {}
+  methods: {
+    toUpdateUser() {
+      this.$router.push({path: "/updatemsg"})
+    }
+  }
 };
 </script>
 <style lang='less' scoped>
