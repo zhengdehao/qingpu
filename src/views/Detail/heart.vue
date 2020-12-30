@@ -1,9 +1,8 @@
 <template>
   <!--溯心的详情页面 -->
   <div class="holiday">
-    <!-- 随滑动高度切换切换的两个不同的头部 -->
-    <detail-header-one v-show="!flag"></detail-header-one>
-    <detail-header-two :themetitle="themeTitle" v-show="flag"></detail-header-two>
+    <!-- 随滑动高度切换切换的不同的头部样式 -->
+    <detail-header :themetitle="themeTitle" :flag="flag"></detail-header>
     <!-- 溯心的详情内容 -->
     <div class="wrapper">
       <div>
@@ -121,9 +120,8 @@
 </template>
 
 <script lang='ts'>
-//两个切换的头部
-import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
-import DetailHeaderTwo from "../../components/Common/DetailHeaderTwo.vue";
+//头部
+import DetailHeader from "../../components/Common/DetailHeader.vue";
 
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import BScroll from "better-scroll";
@@ -148,8 +146,7 @@ export default {
   },
 
   components: {
-    DetailHeaderOne,
-    DetailHeaderTwo,
+    DetailHeader,
     DetailBanner,
     ShopBar,
     Collapse,
