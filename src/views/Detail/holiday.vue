@@ -8,7 +8,7 @@
       <!-- 臻品的详情内容 -->
       <div class="wrapper">
         <div>
-          <detail-banner/>
+          <detail-banner :bannerList="detailData.sliderImgs"/>
             <div class="content">
                 <h2>{{ detailData.title }}</h2>
                 <div class="price">
