@@ -1,5 +1,6 @@
 <template>
-  <find-header v-if="flag"></find-header>
+  <header-one v-if="!flag"></header-one>
+  <header-two :themetitle="find[0].title" v-if="flag"></header-two>
   <div class="wrapper">
     <van-pull-refresh
       v-model="state.loading"
@@ -23,26 +24,34 @@
         <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
       </template>
 
-      <div class="find">
-        <h1>发现</h1>
-        <find-list :findList="findList"></find-list>
-        <h2>人文周刊</h2>
-        <humanity-list :cultureList="cultureList" />
+      <div v-if="find.length">
+        <img
+          class="themeImg"
+          :src="find[0].detailImg"
+          alt=""
+        />
+        <p class="line"></p>
+        <article  @click="change(item.id)" v-if="weeklyList.length" v-for="item in weeklyList" :key="item.id">
+          <img
+            :src="item.titleImg"
+            alt=""
+          />
+          <h3>{{item.title}}</h3>
+          <h6>{{item.author}}</h6>
+        </article>
       </div>
     </van-pull-refresh>
   </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
+import HeaderOne from "../../../components/Find/detail/HeaderOne.vue";
+import HeaderTwo from "../../../components/Find/detail/HeaderTwo.vue";
 import BScroll from "better-scroll";
-import FindList from "../../../components/Find/FindList.vue";
-import HumanityList from "../../../components/Find/HumanityList.vue";
-import FindHeader from "../../../components/Find/FindHeader.vue";
-import { defineComponent, reactive } from "vue";
+import { reactive } from "vue";
 import { Toast } from "vant";
 import { getFindListApi } from "../../../utils/api";
-
-export default defineComponent({
+export default {
   setup() {
     const state = reactive({
       loading: false,
@@ -66,33 +75,38 @@ export default defineComponent({
   data() {
     return {
       flag: false as Boolean,
-      findList:[],
-      cultureList:[],
-      //开始的人文周刊条数
-      start:0,
-      //人文周刊的总条数
-      count:0,
-     //每次加载的条数
-      num:5
+      id: "",
+      find: [],
+      weeklyList: [],
     };
   },
+
   components: {
-    FindList,
-    HumanityList,
-    FindHeader,
+    HeaderOne,
+    HeaderTwo,
   },
+
+  computed: {},
+
   mounted() {
+    this.id = this.$route.params.id;
     this.getFindList();
   },
+
   methods: {
+    change(id) {
+      this.$router.push(`/findrecommend/${id}`);
+    },
     async getFindList() {
-      const res = await getFindListApi();
-      //获得发现列表
-      this.findList=res.result.monthList;
-      this.count=res.result.cultureList.length;
-      //获得人文周刊列表
-      this.cultureList=res.result.cultureList.slice(this.start,this.start+this.num);
-      this.start+=this.num;
+      let res = await getFindListApi();
+      //获取雅集的背景图,主题文字
+      this.find = res.result.monthList.filter((elm) => {
+        return (elm.id === this.id);
+      });
+      //获得下面文章封面和标题
+      this.weeklyList=res.result.insideList.filter((elm)=>{
+         return (elm.month === this.find[0].month);
+      })   
       await this.$nextTick();
       let bs = new BScroll(".wrapper", {
         scrollX: false,
@@ -104,30 +118,25 @@ export default defineComponent({
           top: false,
         },
       });
-      bs.on("scroll", (position: any) => {
-        this.flag = position.y < -100;
+      bs.on("scroll", (position) => {
+        this.flag = position.y < -180;
       });
       bs.on("pullingUp", async () => {
-        this.cultureList=this.cultureList.concat(res.result.cultureList.slice(this.start,this.start+this.num))
-        this.start+=this.num;
         await this.$nextTick();
         bs.refresh();
-        if(this.start<=this.count){
-          bs.finishPullUp();
-        }    
       });
     },
   },
-});
+};
 </script>
-<style lang="less" scoped>
+<style lang='less' scoped>
 .wrapper {
   overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 50px;
+  bottom: 0px;
 }
 .doge {
   width: 140px;
@@ -135,19 +144,35 @@ export default defineComponent({
   margin-top: 8px;
   border-radius: 4px;
 }
-.find {
-  padding-top: 30px;
-  color: #333;
-  h1 {
-    padding-left: 16px;
-    font-size: 24px;
-    padding-top: 30px;
-    padding-bottom: 42.5px;
+.themeImg {
+  width: 100%;
+  height: 100vh;
+}
+.line {
+  width: 20%;
+  height: 4px;
+  border-radius: 2px;
+  background: #eee;
+  margin: 40px auto;
+}
+article {
+  overflow: hidden;
+  margin: 0 15px 50px 15px;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px 0px rgb(173, 172, 172);
+  padding-bottom: 30px;
+  img {
+    width: 100%;
   }
-  h2 {
-    margin-left: 17px;
-    font-size: 16px;
-    padding: 59px 0 21.5px 0;
+  h3 {
+    font-size: 18px;
+    padding: 20px 20px 0px 20px;
+  }
+  h6 {
+    font-size: 12px;
+    color: rgb(109, 106, 106);
+    padding: 15px 0 0 20px;
+    font-weight: 100;
   }
 }
 </style>

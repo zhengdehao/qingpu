@@ -1,7 +1,7 @@
 <template>
     <div class="hotBox">
       <ul class="hot">
-      <li v-for="item in homeHotList" :key="item.id" @click="toHotList">
+      <li v-for="item in homeHotList" :key="item.id" @click="toHotList(item.id)">
           <img :src="item.bgImg" alt="">
           <p>{{ item.provinceName }}</p>
           <p>￥{{ item.price }}起</p>
@@ -20,8 +20,8 @@ export default defineComponent ({
     }
   },
   methods : {
-    toHotList() {
-      this.$router.push("/hotlist")
+    toHotList(id) {
+      this.$router.push({path: "/hotlist/" + id})
     }
   }
 });

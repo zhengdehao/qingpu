@@ -42,11 +42,11 @@
   .banner {
     height: 195px;
     width: 334px;
-    margin: 17px 21px 50px 21px;
+    margin: 17px 0px 50px 6px;
     background: pink;
     border-radius: 5px;
   }
-  .rec-content {
-    padding: 0 15px;
-  }
+  // .rec-content {
+  //   padding: 0 15px;
+  // }
 </style>

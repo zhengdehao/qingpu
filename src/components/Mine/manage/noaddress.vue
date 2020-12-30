@@ -1,10 +1,10 @@
 <template>
-  <!-- 没有优惠券 -->
-  <div class="noproducts">
+  <!-- 没有地址 -->
+  <div class="noaddress">
     <div class="imgg">
-      <van-icon name="bill-o" size="80px" color="#D1D1D1"/>
+      <van-icon name="location-o" size="80px" color="#D1D1D1" />
     </div>
-    <p>没有可用优惠券</p>
+    <p>地址是空的</p>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.noproducts {
+.noaddress {
     padding: 0 25px;
   .imgg {
     margin: 150px 115px 0;

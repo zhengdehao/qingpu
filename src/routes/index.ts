@@ -22,19 +22,27 @@ const routes = [
       {//跳转臻品
         path: "/best",
         component: () => import("../views/Home/Best/index.vue"),
-        redirect: "/best/recommend",
-        children: [
-          {
-            path: "recommend",
-            component: () => import("../views/Home/Best/recommend/index.vue")
-          }
-        ]
+        // redirect: "/best/recommend",
+        // children: [
+        //   {
+        //     path: "recommend",
+        //     component: () => import("../views/Home/Best/recommend/index.vue")
+        //   }
+        // ]
       },
       {//跳转我的
         path: "/mine",
         component: () => import("../views/Home/Mine/index.vue")
       }
     ]
+  },
+   {//发现的雅集页面
+    path: "/elegant/:id",
+    component: () => import("../views/Home/Find/ElegantCollection.vue")
+  },
+  {//发现的雅集页面
+    path: "/findrecommend/:id",
+    component: () => import("../views/Home/Find/recommend.vue")
   },
   {
     //我的页面优惠券路由
@@ -57,6 +65,26 @@ const routes = [
     component: () => import("../components/Mine/list/set.vue")
   },
   {
+    //我的设置页面管理地址路由
+    path: "/address",
+    component: () => import("../components/Mine/manage/address.vue")
+  },
+  {
+    //我的设置页面添加地址路由
+    path: "/addressEdit",
+    component: () => import("../components/Mine/manage/addressEdit.vue")
+  },
+  {
+    //我的设置页面添加推送通知路由
+    path: "/notice",
+    component: () => import("../components/Mine/list/Notice/Notice.vue")
+  },
+  {
+    //我的设置页面关于我们路由
+    path: "/about",
+    component: () => import("../components/Mine/list/about/about.vue")
+  },
+  {
     //我的页面行程订单路由
     path: "/mine/travel",
     component: () => import("../components/Mine/list/travel.vue")
@@ -66,18 +94,30 @@ const routes = [
     path: "/mine/wish",
     component: () => import("../components/Mine/list/wish.vue")
   },
+  {
+    //我的页面登录路由
+    path: "/login",
+    component: () => import("../components/Mine/login.vue")
+  },
+  {
+    //我的页面管理资料路由
+    path: "/updatemsg",
+    component: () => import("../components/Mine/updatemsg.vue")
+  },
   {//人文之旅详情
     path: "/tourdetail/:tourDetailId",
     name: "tourDetail",
     component: () => import("../views/Detail/tour.vue")
   },
   {//臻品详情
-    path: "/bestdetail",
-    component: () => import("../views/Detail/best.vue")
+    path: "/bestdetail/:id",
+    component: () => import("../views/Detail/best.vue"),
+    props: true
   },
   {//主页的热门景点详情
-    path: "/hotlist",
-    component: () => import("../views/Detail/hot.vue")
+    path: "/hotlist/:id",
+    component: () => import("../views/Detail/hot.vue"),
+    props: true
   },
   {//主页的人文假日详情
     path: "/holidaydetail/:homeDetailId",

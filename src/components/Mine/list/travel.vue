@@ -1,4 +1,5 @@
 <template>
+  <!-- 行程订单 -->
   <div class="travel">
     <commhead class="fath"/>
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">行程订单</div>

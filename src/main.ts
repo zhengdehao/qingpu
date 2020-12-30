@@ -4,7 +4,6 @@ import { router } from "./routes";
 import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
-import { store,key } from "./store/index" ;
 //引入文件
 import "./assets/styles/reset.less";
 
@@ -13,6 +12,9 @@ import "amfe-flexible";
 import "./assets/font/iconfont.css";
 import "./assets/styles/style.less";
 import "./assets/styles/jiujiu.less";
+
+//引入Vuex
+import { store, key } from './store'
 
 //引入vant组件
 import { 
@@ -34,9 +36,18 @@ import {
   CollapseItem,
   RadioGroup,
   Radio,
+  PullRefresh,  
   Field,
   SwipeCell,
-  Popup
+  Popup,
+  Checkbox,
+  CheckboxGroup,
+  SubmitBar,
+  AddressList,
+  AddressEdit,
+  Switch,
+  Picker
+  // Dialog
 } from 'vant';
 
 
@@ -56,6 +67,7 @@ app.use(CellGroup);
 app.use(Card);
 app.use(Button);
 app.use(Popup);
+app.use(Picker);
 
 
 app.use(Toast);
@@ -85,9 +97,22 @@ app.use(Field);
 
 //购物车使用商品滑块
 app.use(SwipeCell);
+app.use(Checkbox);
+app.use(CheckboxGroup);
+app.use(SubmitBar);
+//联系地址卡片
+app.use(AddressList);
+app.use(Switch);
+app.use(AddressEdit);
+// app.use(Dialog);
+
+//
+app.use(PullRefresh);
 
 //vuex中使用支持ts
 app.use(store,key);
 
 //挂载a'p'p
 app.mount('#app');
+
+

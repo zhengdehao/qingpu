@@ -1,4 +1,5 @@
 <template>
+  <!-- 优惠券页面 -->
   <div class="cheap">
     <commhead class="fath"/>
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">优惠券</div>

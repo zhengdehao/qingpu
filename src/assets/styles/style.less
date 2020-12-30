@@ -3,10 +3,15 @@
     height: 44px;
   }
   .van-tabs__nav {
+    padding-left: 5px;
     .van-tab {
       width: 74px;
       padding: 0;
       font-size: 12px;
+      &:first-child {
+        width: auto;
+        margin-right: 27px;
+      }
     }
   }
 }
@@ -56,6 +61,66 @@
   display: none;
   color: red;
 }
+//购物车删除选择按钮高度
+.haswish{
+  .goods-card {
+    margin: 0;
+    background-color: #fff;
+  }
+  .delete-button {
+    height: 100%;
+  }
+  .update-button {
+    height: 100%;
+    background: #39828C;
+  }
+  .van-swipe-cell__left{
+    padding: 40px 10px;
+  }
+  .van-swipe-cell__wrapper {
+    margin-left: 40px;
+  }
+}
+//地址列表页样式
+.hasaddress {
+  .van-address-item .van-radio__icon--checked .van-icon {
+    background: #39828C;
+    border-color: #39828C;
+  }
+  .van-button--danger {
+    background: #39828C;
+    border-color: #39828C;
+  }
+}
+//添加地址页面样式
+.addressedit {
+  .addresseditmain {
+    .van-button--danger {
+      background: #39828C;
+      border-color: #39828C;
+    }
+  }
+}
+//修改头像
+.updatemsg {
+  .van-cell__left-icon {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #39828C;
+    overflow: hidden;
+    .van-icon__image {
+      height: 100%;
+      width: 100%;
+      // border-radius: 50%;
+      object-fit:cover;
+    }
+  }
+}
 
 
 
@@ -99,4 +164,10 @@
       line-height: 52px;
     }
   
+}
+
+//臻品列表上间距
+
+.van-tab__pane {
+  padding-top: 17px;
 }

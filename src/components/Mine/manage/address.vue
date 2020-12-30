@@ -1,39 +1,40 @@
 <template>
-  <!-- 添加常用信息 -->
-  <div class="me">
+  <div class="address">
     <commhead class="fath"/>
-    <div :class="[number>=50?'mypage-tip':'mypage-sco']">常用信息</div>
-    <div class="memain">
-      <h1>常用信息</h1>
-      <van-tabs v-model="active" color="#39828C">
-        <van-tab title="人员信息"></van-tab>
-        <van-tab title="签证"></van-tab>
-      </van-tabs>
+    <div :class="[number>=50?'mypage-tip':'mypage-sco']">地址管理</div>
+    <div class="addressmain">
+      <h1>地址管理</h1>
+      <!-- 没有地址 -->
+      <!-- <noaddress /> -->
+      <!-- 有地址 -->
+      <hasaddress />
     </div>
-    <van-button type="primary" size="large" color="#39828C">添加</van-button>
+    <van-button type="primary" to="/best" size="large" color="#39828C">添加地址</van-button>
   </div>
 </template>
 
 <script lang="ts">
-//引入头部导航条
-import commhead from "./commhead.vue";
+import { defineComponent,ref,reactive } from "vue";
+import commhead from "../list/commhead.vue";
+import noaddress from "./noaddress.vue";
+import hasaddress from "./hasaddress.vue";
 export default {
   data() {
     return {
       number:0,
     };
   },
-
   components: {
-    commhead
+    commhead,
+    noaddress,
+    hasaddress
   },
 
   computed: {},
 
   mounted() {
-    window.addEventListener("scroll", this.handleScroll); 
+    window.addEventListener("scroll", this.handleScroll);
   },
-  
 
   methods: {
     handleScroll() {
@@ -44,14 +45,12 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-@import "../../../assets/styles/style.less";
-
-.me {
+.address {
   padding-top: 50px;
   .fath {
     position: fixed;
   }
-  .memain {
+  .addressmain {
     h1 {
       padding: 0 25px;
       margin-top: 46px;

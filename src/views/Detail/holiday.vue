@@ -108,7 +108,7 @@ export default {
 
   computed: {},
 
-  mounted() {
+  mounted() {   
     this.$nextTick();
     let bs = new BScroll(".wrapper", {
       scrollX: false,
