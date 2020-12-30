@@ -6,8 +6,8 @@
       <h1>{{ provinceName }}</h1>
       <div class="content">
         <!-- 需要用v-if来判断有没有改省份的人文之旅-->
-        <div class="holiday">
-          <h2>人文假日</h2>
+        <div class="holiday" v-if="detailList.holidayList">
+          <h2 v-if="detailList.holidayList.length">人文假日</h2>
           <div v-for="item in detailList.holidayList" :key="item.id">
             <img
               :src="item.bgImg"
@@ -23,10 +23,10 @@
             />
             <p>¥1988.00起</p>
             <span>青普文化行馆·丽江白沙</span>
-          </div>
+          </div> -->
         </div>
-        <div class="tour"> -->
-          <h2>人文知旅</h2>
+        <div class="tour" v-if="detailList.tripList">
+          <h2 v-if="detailList.tripList.length">人文知旅</h2>
           <ul>
             <li v-for="item in detailList.tripList" :key="item.id">
               <img
@@ -46,8 +46,8 @@
             </li> -->
           </ul>
         </div>
-        <div class="art">
-          <h2>在地艺文体验</h2>
+        <div class="art" v-if="detailList.expList">
+          <h2 v-if="detailList.expList.length">在地艺文体验</h2>
           <ul>
             <li v-for="item in detailList.expList" :key="item.id">
               <img
@@ -57,20 +57,6 @@
               <span>{{ item.title }}</span>
             </li>
             <!-- <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-            </li>
-            <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-            </li>
-            <li>
               <img
                 src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
                 alt=""
@@ -114,7 +100,7 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
-    bs.on("scroll", (position) => {
+    bs.on("scroll", (position:any) => {
       this.flag = position.y < -180;
     });
     bs.on("pullingUp", async () => {
@@ -135,12 +121,12 @@ export default {
     async getDetailList() {
       let res = await getHomeListApi();
       // res = JSON.parse(JSON.stringify(res));
-      console.log(res.result);
-      console.log(res.result.holidayList.filter(item => item.provinceName == this.provinceName))
+      // console.log(res.result);
+      // console.log(res.result.holidayList.filter(item => item.provinceName == this.provinceName))
       this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
       this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
       this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
-      console.log(this.detailList);
+      // console.log(this.detailList);
     }
   },
   watch: {

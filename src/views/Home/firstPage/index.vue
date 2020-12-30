@@ -5,15 +5,15 @@
     <span class="hotspan" :border="false">热门目的地</span>
     <hotList :homeHotList="homeHotList" />
     <!-- 主题推荐 -->
-    <homeList :homeListData="homeHotList" />
+    <homeList />
     <!-- 人文假日 -->
     <otherList :hometitle="homeTitle[0]" :homeListData="homeHolidayList" />
     <!-- 人文知旅 -->
     <otherList :hometitle="homeTitle[1]" :homeListData="homeTripList" />
     <!-- 在地艺文体验 -->
-    <otherList :hometitle="homeTitle[2]" :homeListData="homeTripList" />
+    <otherList :hometitle="homeTitle[2]" :homeListData="homeExpList" />
     <!-- 溯心 -->
-    <otherList :hometitle="homeTitle[3]" :homeListData="homeTripList" />
+    <otherList :hometitle="homeTitle[3]" :homeListData="homeSuxinList" />
   </div>
 </template>
 
@@ -39,16 +39,20 @@ export default defineComponent ({
       //人文知旅
       homeTripList: [],
       //人文假日
-      homeHolidayList: []
+      homeHolidayList: [],
+      //在地艺文体验
+      homeExpList: [],
+      //溯心
+      homeSuxinList: []
     }
   },
 
   setup() {
+    //定义组件title
     const homeTitle = reactive(["人文假日", "人文知旅", "在地艺文体验", "溯心"]);
 
     return { homeTitle };
   },
-
   components: {
     Banner,
     hotList,
@@ -76,8 +80,10 @@ export default defineComponent ({
       this.homeHolidayList = res.result.holidayList;
       //人文知旅
       this.homeTripList = res.result.tripList;
-
-      console.log( res.result);
+      //在地艺文体验
+      this.homeExpList = res.result.expList;
+      //溯心
+      this.homeSuxinList = res.result.suxinList;
     },
     //显示轻提示
     toas() {
@@ -86,7 +92,7 @@ export default defineComponent ({
         Toast({
           message: "项目名称：青普\n\n项目参与人员\n郑德豪\n邱根国\n陈田\n吕慧笑\n竹文倩\n戴泓程\n\n以上排名不分先后顺序",
           icon: 'like-o',
-          duration: 5000
+          duration: 10000
         });
         sessionStorage.setItem('toastFlag', '1');
       }
@@ -99,18 +105,16 @@ export default defineComponent ({
 @import "../../../assets/styles/jiujiu.less";
 #firstBox {
   color: #000;
-  font-family: "PingFang-SC-Regular";
   padding-left: 14px;
   .hotspan {
     display: block;
-    line-height: 15px;
+    line-height: 24px;
     margin: 34px 0 19px 0;
     font-size: 16px;
     font-weight: bold;
+    color: #323233;
+    padding: 0 2px;
   }
-  //轻提示
-
-
 }
 
 </style>

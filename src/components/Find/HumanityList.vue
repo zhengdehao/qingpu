@@ -23,7 +23,7 @@ export default {
   },
 
   methods: {
-    change(id){
+    change(id:any){
       this.$router.push(`/findrecommend/${id}`)
     }
   }

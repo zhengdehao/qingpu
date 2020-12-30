@@ -36,7 +36,7 @@ export default {
   mounted() {},
 
   methods: {
-    change(id) {
+    change(id:any) {
       this.$router.push(`/elegant/${id}`);
     },
   },

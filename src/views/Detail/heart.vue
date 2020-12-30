@@ -163,7 +163,7 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
-    bs.on("scroll", (position) => {
+    bs.on("scroll", (position:any) => {
       this.flag = position.y < -180;
     });
     bs.on("pullingUp", async () => {
@@ -190,7 +190,7 @@ export default {
   padding-left: 23px;
   padding-right: 23px;
   h2 {
-    padding-top: 30px;
+    padding: 30px 0;
     font-size: 24px;
   }
   h6 {

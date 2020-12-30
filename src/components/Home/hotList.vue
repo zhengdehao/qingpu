@@ -20,7 +20,7 @@ export default defineComponent ({
     }
   },
   methods : {
-    toHotList(id) {
+    toHotList(id:any) {
       this.$router.push({path: "/hotlist/" + id})
     }
   }
@@ -28,6 +28,7 @@ export default defineComponent ({
 </script>
 
 <style lang='less' scoped>
+@import "../../assets/styles/jiujiu.less";
 .hotBox {
   overflow: auto;
     &::-webkit-scrollbar {
@@ -44,13 +45,15 @@ export default defineComponent ({
     width: 107px;
     height: 185px;
     margin-right: 10px;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin-left: 3px;
     img {
       width: 107px;
       height: 145px;
-      border-radius: 3px;
+      border-radius: 5px;
       border: none;
-      margin-bottom: 11px;
+      margin-bottom: 5px;
+      box-shadow: 0 0 3px 0;
     }
     p:nth-of-type(1) {
       height: 12px;

@@ -56,4 +56,7 @@ export default defineComponent({
     font-size: 22px;
   }
 }
+.van-tabbar-item--active {
+  color: #39828c;
+}
 </style>

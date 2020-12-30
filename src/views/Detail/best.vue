@@ -67,7 +67,7 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
-    bs.on("scroll", (position) => {
+    bs.on("scroll", (position:any) => {
       this.flag = position.y < -200;
     });
     bs.on("pullingUp", async () => {
