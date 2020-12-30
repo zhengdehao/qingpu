@@ -5,8 +5,21 @@
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">管理资料</div>
     <div class="updatemsgmain">
       <h1>管理资料</h1>
-      <van-cell center title="头像" value="修改" icon="https://img.yzcdn.cn/vant/leaf.jpg" v-model="fileList" is-link />
-      <van-cell center title="昵称" label="哈哈哈" />
+      <div class="headPhoto">
+        <div class="headtitle">头像</div>
+        <van-uploader v-model="fileList" multiple
+        :show-upload= "fileList.length>0? false : true"
+        capture="camera"
+        />
+      </div>
+      <van-field
+        v-model="value"
+        label="昵称"
+        center
+        placeholder="输入框内容右对齐"
+        input-align="right"
+      />
+      <!-- <van-cell center title="昵称" label="哈哈哈" /> -->
       <van-cell center title="性别" :label="showSex" is-link @click="showPopup"/>
       <van-popup v-model:show="show" position="bottom" :style="{ height: '30%' }">
         <van-picker
@@ -17,7 +30,9 @@
         />
       </van-popup>
     </div>
-    <van-button type="primary" to="/best" size="large" color="#39828C">完成</van-button>
+    <van-button type="primary" size="large" color="#39828C">完成</van-button>
+
+    
   </div>
 </template>
 
@@ -42,12 +57,7 @@ export default {
     const onCancel = () => {
       show.value = false;
     };
-    const fileList = ref([
-      { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
-      // Uploader 根据文件后缀来判断是否为图片文件
-      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      { url: 'https://cloud-image', isImage: true },
-    ]);
+    const fileList = ref([]);
     return {
       show,
       showPopup,
@@ -57,6 +67,7 @@ export default {
       showSex,
       fileList
     };
+    
   },
   data() {
     return {
@@ -100,6 +111,15 @@ export default {
       color: #333333;
       margin-bottom: 20px;
     }
+    .headPhoto {
+      height: 92px;
+      font-size: 19px;
+      display: flex;
+      justify-content: space-between;
+      padding: 25px;
+      box-sizing: border-box;
+      line-height: 37px;
+    }
   }
   .van-button--large {
     position: fixed;
@@ -109,8 +129,8 @@ export default {
   .van-cell {
     height: 92px;
     font-size: 19px;
-    padding: 20px 30px 60px;
-    position: relative;
+    padding: 25px;
   }
+  
 }
 </style>

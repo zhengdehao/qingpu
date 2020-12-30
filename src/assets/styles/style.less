@@ -103,23 +103,40 @@
 }
 //修改头像
 .updatemsg {
-  .van-cell__left-icon {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 25px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
+  .van-uploader__upload {
+    width: 42px;
+    height: 42px;
     background: #39828C;
-    overflow: hidden;
-    .van-icon__image {
-      height: 100%;
-      width: 100%;
-      // border-radius: 50%;
-      object-fit:cover;
+    border-radius: 50%;
+    .van-icon-photograph::before {
+      content: '';
     }
   }
+  .van-uploader__preview-delete {
+    display: none;
+  }
+  .van-uploader__preview-image {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .van-cell {
+    .van-field__label {
+      color: #323232;
+    }
+    .van-field__value {
+      .van-field__body{
+        font-size: 19px;
+        color: #323233;
+        input {
+          font-size: 19px;
+        }
+      }
+      
+    }
+  }
+  
 }
 
 
@@ -171,3 +188,5 @@
 .van-tab__pane {
   padding-top: 17px;
 }
+
+

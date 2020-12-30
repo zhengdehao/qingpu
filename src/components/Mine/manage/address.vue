@@ -9,7 +9,7 @@
       <!-- 有地址 -->
       <hasaddress />
     </div>
-    <van-button type="primary" to="/best" size="large" color="#39828C">添加地址</van-button>
+    <van-button type="primary" to="/addressEdit" size="large" color="#39828C">添加地址</van-button>
   </div>
 </template>
 

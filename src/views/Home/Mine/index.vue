@@ -1,8 +1,8 @@
 <template>
 <div class="mypage">
   <div :class="[number>=50?'mypage-tip':'mypage-sco']">我的</div>
-    <!-- <personal /> -->
-    <unpersonal />
+    <personal />
+    <!-- <unpersonal /> -->
     <list />
   <!-- </div> -->
 </div>

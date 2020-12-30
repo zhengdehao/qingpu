@@ -51,9 +51,7 @@ export default {
 @import "../../../assets/styles/style.less";
 .hasaddress{
   margin-bottom: 60px;
-  // .van-address-item {
-  //   background: lightblue;
-  // }
+  
 }
 
 </style>

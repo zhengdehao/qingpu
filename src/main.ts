@@ -46,7 +46,8 @@ import {
   AddressEdit,
   Switch,
   Popup,
-  Picker
+  Picker,
+  Uploader
   // Dialog
 } from 'vant';
 
@@ -68,6 +69,7 @@ app.use(Card);
 app.use(Button);
 app.use(Popup);
 app.use(Picker);
+app.use(Uploader);
 
 
 app.use(Toast);

@@ -80,21 +80,33 @@
   background: #39828C;
   border-color: #39828C;
 }
-.updatemsg .van-cell__left-icon {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  bottom: 0;
-  left: 25px;
-  border: 1px solid #ccc;
-  border-radius: 50%;
+.updatemsg .van-uploader__upload {
+  width: 42px;
+  height: 42px;
   background: #39828C;
+  border-radius: 50%;
+}
+.updatemsg .van-uploader__upload .van-icon-photograph::before {
+  content: '';
+}
+.updatemsg .van-uploader__preview-delete {
+  display: none;
+}
+.updatemsg .van-uploader__preview-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   overflow: hidden;
 }
-.updatemsg .van-cell__left-icon .van-icon__image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.updatemsg .van-cell .van-field__label {
+  color: #323232;
+}
+.updatemsg .van-cell .van-field__value .van-field__body {
+  font-size: 19px;
+  color: #323233;
+}
+.updatemsg .van-cell .van-field__value .van-field__body input {
+  font-size: 19px;
 }
 .van-dialog__message {
   font-size: 18px;
