@@ -1,6 +1,6 @@
 <template>
   <div class="commhead">
-    <van-icon name="arrow-left" size="30" color="#333" />
+    <van-icon name="arrow-left" size="30" color="#333" @click="toback"/>
   </div>
 </template>
 <script lang="ts">
@@ -15,7 +15,11 @@ export default {
 
   mounted() {},
 
-  methods: {}
+  methods: {
+    toback() {
+      window.history.go(-1);
+    }
+  }
 };
 </script>
 <style lang='less' scoped>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 首页轮播图 -->
-       <router-view></router-view>
+      <router-view></router-view>
     <myfooter />
   </div>
 </template>

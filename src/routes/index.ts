@@ -62,28 +62,54 @@ const routes = [
     component: () => import("../components/Mine/list/travel.vue")
   },
   {
-    //我的页面心愿单路由
+    //我的页面购物车路由
     path: "/mine/wish",
     component: () => import("../components/Mine/list/wish.vue")
   },
   {//人文之旅详情
-    path:"/tourdetail",
-    component:()=>import("../views/Detail/tour.vue")
+    path: "/tourdetail/:tourDetailId",
+    name: "tourDetail",
+    component: () => import("../views/Detail/tour.vue")
   },
   {//臻品详情
-    path:"/bestdetail",
-    component:()=>import("../views/Detail/best.vue")
+    path: "/bestdetail",
+    component: () => import("../views/Detail/best.vue")
   },
   {//主页的热门景点详情
-    path:"/hotlist",
-    component:()=>import("../views/Detail/hot.vue")
+    path: "/hotlist",
+    component: () => import("../views/Detail/hot.vue")
   },
-    {//主页的人文假日详情
-      path:"/holidaydetail",
-      component:()=>import("../views/Detail/holiday.vue")
-    },
+  {//主页的人文假日详情
+    path: "/holidaydetail/:homeDetailId",
+    name: "homeDetail",
+    component: () => import("../views/Detail/holiday.vue")
+  },
+  {//主页溯心详情
+    path: "/heartdetail",
+    component: () => import("../views/Detail/heart.vue")
+  },
+  {//主页在地艺文体验详情
+    path: "/artdetail",
+    component: () => import("../views/Detail/art.vue")
+  },
+  {//人文之旅详情费用说明
+    path: "/tourcost",
+    component: () => import("../views/Detail/tourCost.vue")
+  },
+  {//人文之旅详情注意事项
+    path: "/tournotice",
+    component: () => import("../views/Detail/tourNotice.vue")
+  },
+  {//首页主题推荐列表01
+    path: "/themelist01",
+    component: () => import("../views/Home/firstPage/themeList01.vue")
+  },
+  {//首页主题推荐列表02
+    path: "/themelist02",
+    component: () => import("../views/Home/firstPage/themeList02.vue")
+  },
   {//404页面
-    path:  "/:catchAll(.*)",
+    path: "/:catchAll(.*)",
     component: () => import("../views/Errer/index.vue")
   }
 ]

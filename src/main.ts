@@ -4,6 +4,7 @@ import { router } from "./routes";
 import "../src/assets/font/iconfont.css";
 import 'vant/lib/index.css';
 
+import { store,key } from "./store/index" ;
 //引入文件
 import "./assets/styles/reset.less";
 
@@ -32,13 +33,15 @@ import {
   Collapse, 
   CollapseItem,
   RadioGroup,
-  Radio 
+  Radio,
+  Field,
+  SwipeCell,
+  Popup
 } from 'vant';
 
 
 
 const app = createApp(App);
-// import { Icon } from 'vant';
 
 //使用router
 app.use(router);
@@ -52,6 +55,8 @@ app.use(Cell);
 app.use(CellGroup);
 app.use(Card);
 app.use(Button);
+app.use(Popup);
+
 
 app.use(Toast);
 
@@ -76,6 +81,13 @@ app.use(CollapseItem);
 //单选框
 app.use(RadioGroup);
 app.use(Radio);
+app.use(Field);
+
+//购物车使用商品滑块
+app.use(SwipeCell);
+
+//vuex中使用支持ts
+app.use(store,key);
 
 //挂载a'p'p
 app.mount('#app');

@@ -6,6 +6,16 @@
   padding: 0;
   font-size: 12px;
 }
+.center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .mine .van-nav-bar__content {
   height: 50px;
 }
@@ -40,8 +50,8 @@
   padding-bottom: 15px;
   color: black;
 }
-.holiday .my-swipe .van-swipe-item {
-  height: 260px!important;
+.bestdetail .my-swipe .van-swipe-item {
+  height: 415px!important;
 }
 .holiday .checkin .van-icon-arrow {
   vertical-align: middle;

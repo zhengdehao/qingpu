@@ -3,16 +3,19 @@
     <commhead class="fath"/>
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">行程订单</div>
     <div class="mainlist">
-      <hasproducts />
+      <h1>行程订单</h1>
+      <notravel />
+      <!-- <hastravel /> -->
     </div>
-    <van-button type="primary" to="/" size="large">去看看</van-button>
+    <van-button type="primary" to="/" size="large" color="#39828C">去看看</van-button>
   </div>
 </template>
 
 <script lang="ts">
 //引入头部导航条
 import commhead from "./commhead.vue";
-import hasproducts from "../order/hasproducts.vue";
+import hastravel from "../order/hastravel.vue";
+import notravel from "../order/notravel.vue";
 export default {
   data() {
     return {
@@ -22,7 +25,8 @@ export default {
 
   components: {
     commhead,
-    hasproducts
+    hastravel,
+    notravel
   },
 
   computed: {},
@@ -56,6 +60,12 @@ export default {
     font-family: PingFang SC;
     font-weight: bold;
     color: #333333;
+    margin-bottom: 20px;
+  }
+  .van-button--large {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
 </style>

@@ -4,8 +4,9 @@
     <van-swipe-item>田</van-swipe-item>
     <van-swipe-item>小</van-swipe-item>
     <van-swipe-item>可</van-swipe-item>
+    <van-swipe-item>爱</van-swipe-item>
     <template #indicator>
-      <progress class="custom-indicator" :value="((current + 1) / 4) * 100" max="100"></progress>
+      <progress class="custom-indicator" :value="((current + 1) / 5) * 100" max="100"></progress>
     </template>
   </van-swipe>
 </template>
@@ -38,7 +39,7 @@ export default defineComponent({
 }
 .my-swipe .van-swipe-item {
   width: 100%;
-  height: 415px;
+  height: 260px;
   background: pink;
   text-align: center;
   line-height: 258px;
