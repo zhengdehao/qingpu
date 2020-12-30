@@ -2,7 +2,7 @@
   <div>
     <i @click="back"><van-icon name="arrow-left" /></i>
     <p>
-      <span> <van-icon name="like-o" /></span>
+      <span><van-icon v-else name="like-o" /></span>
       <span><share-icon/></span>
     </p>
       <h3>{{themetitle}}</h3> 
@@ -13,7 +13,8 @@
 import ShareIcon from "./ShareIcon.vue"
 export default {
   data() {
-    return {};
+    return {
+    };
   },
  props:{
     themetitle:String,
