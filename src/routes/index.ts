@@ -41,7 +41,7 @@ const routes = [
     component: () => import("../views/Home/Find/ElegantCollection.vue")
   },
   {//发现的雅集页面
-    path: "/findrecommend",
+    path: "/findrecommend/:id",
     component: () => import("../views/Home/Find/recommend.vue")
   },
   {
@@ -114,8 +114,9 @@ const routes = [
     props: true
   },
   {//主页的热门景点详情
-    path: "/hotlist",
-    component: () => import("../views/Detail/hot.vue")
+    path: "/hotlist/:id",
+    component: () => import("../views/Detail/hot.vue"),
+    props: true
   },
   {//主页的人文假日详情
     path: "/holidaydetail",

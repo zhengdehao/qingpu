@@ -1,6 +1,6 @@
 <template>
   <header-one v-if="!flag"></header-one>
-  <header-two :themetitle="themeTitle" v-if="flag"></header-two>
+  <header-two :themetitle="find[0].title" v-if="flag"></header-two>
   <div class="wrapper">
     <van-pull-refresh
       v-model="state.loading"
@@ -24,27 +24,20 @@
         <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
       </template>
 
-      <div>
-        <img 
+      <div v-if="find.length">
+        <img
           class="themeImg"
-          src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
+          :src="find[0].detailImg"
           alt=""
         />
         <p class="line"></p>
-        <article @click="change">
+        <article  @click="change(item.id)" v-if="weeklyList.length" v-for="item in weeklyList" :key="item.id">
           <img
-            src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
+            :src="item.titleImg"
             alt=""
           />
-          <h3>青浦雅集招募 | 博物馆亲子课堂：NiKi花园奇景</h3>
-        </article>
-        <article>
-          <img
-            src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-            alt=""
-          />
-          <h3>青浦雅集招募 | 找乐生活节</h3>
-          <h6>作者：青普君</h6>
+          <h3>{{item.title}}</h3>
+          <h6>{{item.author}}</h6>
         </article>
       </div>
     </van-pull-refresh>
@@ -57,6 +50,7 @@ import HeaderTwo from "../../../components/Find/detail/HeaderTwo.vue";
 import BScroll from "better-scroll";
 import { reactive } from "vue";
 import { Toast } from "vant";
+import { getFindListApi } from "../../../utils/api";
 export default {
   setup() {
     const state = reactive({
@@ -67,7 +61,7 @@ export default {
         Toast.loading({
           forbidClick: true,
           loadingType: "spinner",
-          duration:1000
+          duration: 1000,
         });
         state.loading = false;
       }, 1000);
@@ -81,7 +75,9 @@ export default {
   data() {
     return {
       flag: false as Boolean,
-      themeTitle: "1月青普雅集",
+      id: "",
+      find: [],
+      weeklyList: [],
     };
   },
 
@@ -93,30 +89,43 @@ export default {
   computed: {},
 
   mounted() {
-    this.$nextTick();
-    let bs = new BScroll(".wrapper", {
-      scrollX: false,
-      scrollY: true,
-      click: true,
-      pullUpLoad: true,
-      probeType: 3,
-      bounce: {
-        top: false,
-      },
-    });
-    bs.on("scroll", (position) => {
-      this.flag = position.y < -180;
-    });
-    bs.on("pullingUp", async () => {
-      await this.$nextTick();
-      bs.refresh();
-    });
+    this.id = this.$route.params.id;
+    this.getFindList();
   },
 
   methods: {
-    change(){
-      this.$router.push("/findrecommend")
-    }
+    change(id) {
+      this.$router.push(`/findrecommend/${id}`);
+    },
+    async getFindList() {
+      let res = await getFindListApi();
+      //获取雅集的背景图,主题文字
+      this.find = res.result.monthList.filter((elm) => {
+        return (elm.id === this.id);
+      });
+      //获得下面文章封面和标题
+      this.weeklyList=res.result.insideList.filter((elm)=>{
+         return (elm.month === this.find[0].month);
+      })   
+      await this.$nextTick();
+      let bs = new BScroll(".wrapper", {
+        scrollX: false,
+        scrollY: true,
+        click: true,
+        pullUpLoad: true,
+        probeType: 3,
+        bounce: {
+          top: false,
+        },
+      });
+      bs.on("scroll", (position) => {
+        this.flag = position.y < -180;
+      });
+      bs.on("pullingUp", async () => {
+        await this.$nextTick();
+        bs.refresh();
+      });
+    },
   },
 };
 </script>
@@ -136,8 +145,8 @@ export default {
   border-radius: 4px;
 }
 .themeImg {
-  min-width: 100%;
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 .line {
   width: 20%;
@@ -155,14 +164,14 @@ article {
   img {
     width: 100%;
   }
-  h3{
-    font-size:18px;
-    padding:20px 20px 0px 20px;
+  h3 {
+    font-size: 18px;
+    padding: 20px 20px 0px 20px;
   }
-  h6{
-    font-size:12px;
-    color:rgb(109, 106, 106);
-    padding:15px 0 0 20px;
+  h6 {
+    font-size: 12px;
+    color: rgb(109, 106, 106);
+    padding: 15px 0 0 20px;
     font-weight: 100;
   }
 }

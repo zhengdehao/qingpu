@@ -2,7 +2,7 @@
 <div class="mypage">
   <div :class="[number>=50?'mypage-tip':'mypage-sco']">我的</div>
     <template v-if="isLogin">
-      <personal />
+      <personal :userInfo="userInfo" />
     </template>
     <template v-else-if="!isLogin">
       <unpersonal />
@@ -22,11 +22,13 @@ import unpersonal from "../../../components/Mine/unpersonal.vue";
 import list from "../../../components/Mine/list.vue";
 import { defineComponent } from 'vue';
 import { Toast } from 'vant';
+import { getUserInfoApi } from "../../../utils/api";
 export default defineComponent ({
   data() {
     return {
       number:0,
-      isLogin: false
+      isLogin: false,
+      userInfo: {}
     };
   },
 
@@ -46,6 +48,7 @@ export default defineComponent ({
     window.addEventListener("scroll", this.handleScroll);
     console.log(1);
     this.isLoginChange();
+    this.getUserInfo();
   },
 
   methods: {
@@ -56,6 +59,14 @@ export default defineComponent ({
     isLoginChange() {
       if(localStorage.getItem("phone")) { this.isLogin = true }
       else { this.isLogin = false}
+    },
+    async getUserInfo() {
+      if(this.isLogin) {
+        console.log(localStorage.getItem("phone"));
+        const res = await getUserInfoApi({phone: localStorage.getItem("phone")});
+        console.log(res);
+        this.userInfo = res.result[0];
+      }
     }
   },
   unmounted() {

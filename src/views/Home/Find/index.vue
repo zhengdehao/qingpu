@@ -1,12 +1,12 @@
 <template>
-<find-header v-if="flag"></find-header>
-<div class="wrapper">
-   <van-pull-refresh
+  <find-header v-if="flag"></find-header>
+  <div class="wrapper">
+    <van-pull-refresh
       v-model="state.loading"
       :head-height="100"
       @refresh="onRefresh"
     >
-    <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
+      <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
       <template #pulling="props">
         <img
           class="doge"
@@ -24,13 +24,13 @@
       </template>
 
       <div class="find">
-          <h1>发现</h1>
-          <find-list></find-list>
-          <h2>人文周刊</h2>
-          <humanity-list />
+        <h1>发现</h1>
+        <find-list :findList="findList"></find-list>
+        <h2>人文周刊</h2>
+        <humanity-list :cultureList="cultureList" />
       </div>
     </van-pull-refresh>
-</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,11 +38,12 @@ import BScroll from "better-scroll";
 import FindList from "../../../components/Find/FindList.vue";
 import HumanityList from "../../../components/Find/HumanityList.vue";
 import FindHeader from "../../../components/Find/FindHeader.vue";
-import { defineComponent } from "vue";
-import { reactive } from "vue";
+import { defineComponent, reactive } from "vue";
 import { Toast } from "vant";
+import { getFindListApi } from "../../../utils/api";
+
 export default defineComponent({
-    setup() {
+  setup() {
     const state = reactive({
       loading: false,
     });
@@ -51,7 +52,7 @@ export default defineComponent({
         Toast.loading({
           forbidClick: true,
           loadingType: "spinner",
-          duration:1000
+          duration: 1000,
         });
         state.loading = false;
       }, 1000);
@@ -65,27 +66,57 @@ export default defineComponent({
   data() {
     return {
       flag: false as Boolean,
-
+      findList:[],
+      cultureList:[],
+      //开始的人文周刊条数
+      start:0,
+      //人文周刊的总条数
+      count:0,
+     //每次加载的条数
+      num:5
     };
   },
-
   components: {
     FindList,
     HumanityList,
     FindHeader,
   },
   mounted() {
-    this.$nextTick(() => {
+    this.getFindList();
+  },
+  methods: {
+    async getFindList() {
+      const res = await getFindListApi();
+      //获得发现列表
+      this.findList=res.result.monthList;
+      this.count=res.result.cultureList.length;
+      //获得人文周刊列表
+      this.cultureList=res.result.cultureList.slice(this.start,this.start+this.num);
+      this.start+=this.num;
+      await this.$nextTick();
       let bs = new BScroll(".wrapper", {
         scrollX: false,
         scrollY: true,
         click: true,
+        pullUpLoad: true,
         probeType: 3,
+        bounce: {
+          top: false,
+        },
       });
       bs.on("scroll", (position: any) => {
-        this.flag = position.y < -50;
+        this.flag = position.y < -100;
       });
-    });
+      bs.on("pullingUp", async () => {
+        this.cultureList=this.cultureList.concat(res.result.cultureList.slice(this.start,this.start+this.num))
+        this.start+=this.num;
+        await this.$nextTick();
+        bs.refresh();
+        if(this.start<=this.count){
+          bs.finishPullUp();
+        }    
+      });
+    },
   },
 });
 </script>

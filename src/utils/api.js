@@ -12,3 +12,12 @@ export const getCodeApi = params => http.post("users/getCode", params);
 // 登录
 
 export const loginIntoApi = params => http.post("users/register", params);
+//请求发现页面数据
+export const getFindListApi = params => http.get("finds",params);
+
+//请求个人信息
+
+export const getUserInfoApi = params => http.post("users/getInfo", params);
+
+//获得首页详情
+export const getHomeDetail = params => http.post("home/detail", params);

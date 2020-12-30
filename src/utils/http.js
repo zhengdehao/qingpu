@@ -11,7 +11,7 @@ const http = {
       instance
         .get(url, { params: obj })
         .then(res => {
-          if (res.data.status == "0") {
+          if (res.data.status == 0) {
             resolve(res.data);
           } else {
             console.log(res.msg);
@@ -25,6 +25,7 @@ const http = {
         .post(url, obj)
         .then(res => {
           if (res.data.status === "0") {
+            // console.log(res)
             resolve(res.data);
           } else {
             console.log(res.msg);
