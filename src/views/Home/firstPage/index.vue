@@ -11,9 +11,9 @@
     <!-- 人文知旅 -->
     <otherList :hometitle="homeTitle[1]" :homeListData="homeTripList" />
     <!-- 在地艺文体验 -->
-    <otherList :hometitle="homeTitle[2]" :homeListData="homeTripList" />
+    <otherList :hometitle="homeTitle[2]" :homeListData="homeExpList" />
     <!-- 溯心 -->
-    <otherList :hometitle="homeTitle[3]" :homeListData="homeTripList" />
+    <otherList :hometitle="homeTitle[3]" :homeListData="homeSuxinList" />
   </div>
 </template>
 
@@ -39,7 +39,11 @@ export default defineComponent ({
       //人文知旅
       homeTripList: [],
       //人文假日
-      homeHolidayList: []
+      homeHolidayList: [],
+      //在地艺文体验
+      homeExpList: [],
+      //溯心
+      homeSuxinList: []
     }
   },
 
@@ -76,6 +80,10 @@ export default defineComponent ({
       this.homeHolidayList = res.result.holidayList;
       //人文知旅
       this.homeTripList = res.result.tripList;
+      //在地艺文体验
+      this.homeExpList = res.result.expList;
+      //溯心
+      this.homeSuxinList = res.result.suxinList;
     },
     //显示轻提示
     toas() {
@@ -97,14 +105,15 @@ export default defineComponent ({
 @import "../../../assets/styles/jiujiu.less";
 #firstBox {
   color: #000;
-  font-family: "PingFang-SC-Regular";
   padding-left: 14px;
   .hotspan {
     display: block;
-    line-height: 15px;
+    line-height: 24px;
     margin: 34px 0 19px 0;
     font-size: 16px;
     font-weight: bold;
+    color: #323233;
+    padding: 0 2px;
   }
 }
 

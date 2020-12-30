@@ -125,11 +125,13 @@ const routes = [
     component: () => import("../views/Detail/holiday.vue")
   },
   {//主页溯心详情
-    path: "/heartdetail",
+    path: "/heartdetail/:heartId",
+    name: "heartdetail",
     component: () => import("../views/Detail/heart.vue")
   },
   {//主页在地艺文体验详情
-    path: "/artdetail",
+    path: "/artdetail/:artId",
+    name: "artdetail",
     component: () => import("../views/Detail/art.vue")
   },
   {//人文之旅详情费用说明

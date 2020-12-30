@@ -1,6 +1,6 @@
 <template>
   <div class="otherBox">
-    <van-cell :title="hometitle" is-link value="查看全部" :border="false" />
+    <van-cell :title="hometitle" is-link  :border="false" class="otherTitle"/>
     <div class="otheritemBox">
       <ul class="otherListUl">
         <li v-for="item in homeListData" @click="toDetail(item.type, item)">
@@ -8,8 +8,10 @@
           <p>{{ item.title }}</p>
           <p v-if="item.type == 0">{{ item.price }}起</p>
           <p v-else-if="item.type == 1">{{ item.price }}起</p>
-          <p v-else-if="item.type == 4">￥{{ item.price }}起</p>
+          <p v-else-if="item.type == 4">{{ item.price }}起</p>
+          <aside v-if="item.type == 1">{{ item.provinceName }}</aside>
           <aside v-if="item.type == 2">{{ item.provinceName }}</aside>
+          <aside v-if="item.type == 4">{{ item.provinceName }}</aside>
         </li>
       </ul>
     </div>
@@ -34,15 +36,22 @@ export default defineComponent ({
           params: { tourDetailId: item.id}
         });
       }else if (type == 3){
-        console.log("type3");
+        this.$router.push({
+          name: "artdetail",
+          params: { artId: item.id}
+        });
       }else if (type == 4){
-        console.log("type4");
+        this.$router.push({
+          name: "heartdetail",
+          params: { heartId: item.id}
+        });
       }
     }
   }
 });
 </script>
 <style lang='less' scoped>
+@import "../../assets/styles/jiujiu.less";
 .otherBox {
   margin-bottom: 38px;
   .van-cell--clickable {
@@ -72,11 +81,12 @@ export default defineComponent ({
           width: 167px;
           height: 112px;
           border-radius: 5px;
+          margin-bottom: 5px;
         }
         p:nth-of-type(1) {
-          height: 30px;
           line-height: 15px;
           font-size: 12px;
+          padding: 0 2px;
         }
         p:nth-of-type(2) {
           margin-top: 7px;
@@ -84,6 +94,7 @@ export default defineComponent ({
           line-height: 10px;
           font-size: 10px;
           color: #5F5F5F;
+          padding: 0 1px;
         }
         aside {
           width: 44px;
@@ -102,4 +113,5 @@ export default defineComponent ({
     }
   }
 }
+
 </style>

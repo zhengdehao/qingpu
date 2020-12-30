@@ -7,13 +7,13 @@
     <!-- 在地艺文体验的详情内容 -->
     <div class="wrapper">
       <div>
-        <detail-banner />
+        <detail-banner :bannerList="detailData.sliderImgs"/>
         <div class="content">
-          <h2>{{ themeTitle }}</h2>
+          <h2>{{ detailData.title }}</h2>
           <h3>套餐内容</h3>
           <!-- 套餐内容的html存在这里 -->
           <div class="html">
-            <h4>【艺文介绍】</h4>
+            <!-- <h4>【艺文介绍】</h4>
             <p>湿版摄影，它来自于19世纪，比胶片还要久远.湿版摄影用玻璃等当底片，在干净的玻璃上涂火棉胶为主材的溶剂，再浸入硝酸银，取出后在保持湿润的同时进行拍摄，然后显影，定影，根据喜好，把底片做成正片或者负片的摄影技术。</p>
             <p></p>
             <img src='http://42.192.155.18:3180/images/art/bj/beijing_tiyan04_con_01.png'/>
@@ -21,7 +21,8 @@
             <img src='http://42.192.155.18:3180/images/art/bj/beijing_tiyan04_con_02.png'/>
             <h4>【导师介绍】</h4>
             <p>邸晋军，中国内地最早使用湿法火棉胶黑玻璃板工艺用于艺术创作的实践者.1978年年出生于山西.二03年毕业于北京电影学院摄影学院.曾任“生活”杂志摄影师。现任《新京报》摄影记者。2010年获得法国才华摄影基金中国区肖像类冠军.2011年年获得第一届全国青年摄影大展评委会推荐奖.2012年年获得台北国际摄影节年度最佳新锐摄影师奖.2013年获得美国pdn(摄影新闻)摄影奖个人组别奖，入选为T0P20中国当代摄影新锐之一</p>
-             <p>昌昊，青普文化导师，有颜有才、有趣有识的斜杠青年.摄影师，其导演与摄制作品曾获得金鸡百花奖；手作达人，擅长金银细工、天然植物染等多项非遗工艺，是“六物法则”系列手作产品的原创设计。</p> 
+             <p>昌昊，青普文化导师，有颜有才、有趣有识的斜杠青年.摄影师，其导演与摄制作品曾获得金鸡百花奖；手作达人，擅长金银细工、天然植物染等多项非遗工艺，是“六物法则”系列手作产品的原创设计。</p>  -->
+             <div v-html="detailData.des"></div>
           </div>
            <!-- 用v-if判断suitable字段是不是为空字符串 -->
           <div class="suitable">
@@ -40,12 +41,14 @@ import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
 import DetailHeaderTwo from "../../components/Common/DetailHeaderTwo.vue";
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import BScroll from "better-scroll";
-
+//引入api
+import { postExpDetailApi } from "../../utils/api";
 export default {
   data() {
     return {
       flag: false as Boolean,
       themeTitle: "古籍智慧之光——我在青普修古籍",
+      detailData: []
     };
   },
 
@@ -74,8 +77,17 @@ export default {
       await this.$nextTick();
       bs.refresh();
     });
+    //请求详情页数据
+    this.postExpDetail();
   },
-  methods: {},
+  methods: {
+    //请求详情页数据
+    async postExpDetail(){
+      const res = await postExpDetailApi({ id:this.$route.params.artId });
+      this.detailData = res.result[0];
+      console.log(this.detailData)
+    }
+  },
 };
 </script>
 <style lang='less' scoped>

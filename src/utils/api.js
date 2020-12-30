@@ -7,6 +7,10 @@ export const getHomeListApi = params => http.get("home/recommend", params);
 export const postHolidayApi = params => http.post("home/detail", params);
 //请求人文知旅详情页数据
 export const postTourApi = params => http.post("home/detail", params);
+//获得在地艺文体验详情页数据
+export const postExpDetailApi = params => http.post("home/detail", params);
+//获得溯心详情页数据
+export const postSuxinDetailApi = params => http.post("home/detail", params);
 //请求臻品页面
 export const getGoodsListApi = params => http.post("/goods", params);
 // 请求验证码
