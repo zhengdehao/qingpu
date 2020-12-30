@@ -82,9 +82,13 @@ export default {
       const res = await loginIntoApi({phone: this.phone, code: this.code});
       
       console.log(res);
-      localStorage.setItem("phone",res.phone);
+      if(res.status === "0") {
+        localStorage.setItem("phone",res.phone);
+        this.$router.push({path: "/mine"});
+      } else {
+        alert("验证码错误，清重新输入验证码")
+      }
 
-      this.$router.push({path: "/mine"});
     }
   }
 };

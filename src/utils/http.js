@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Toast } from "vant";
+
 //创建实例
 const instance = axios.create({
   baseURL: "http://42.192.155.18:3180/",
@@ -14,7 +16,7 @@ const http = {
           if (res.data.status == 0) {
             resolve(res.data);
           } else {
-            console.log(res.msg);
+            Toast(res.data.msg);
           }
         })
     });
@@ -28,7 +30,7 @@ const http = {
             // console.log(res)
             resolve(res.data);
           } else {
-            console.log(res.msg);
+            Toast(res.data.msg);
           }
         })
     });

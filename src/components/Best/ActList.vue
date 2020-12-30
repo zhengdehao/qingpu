@@ -4,7 +4,7 @@
     <div class="imglist">
       <ul>
         <li v-for="item in imgList" :key="item">
-          <img src="" alt="">
+          <img :src="item" alt="" style="height:100%;width:100%">
         </li>
       </ul>
     </div>
