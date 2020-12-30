@@ -21,7 +21,8 @@ export default {
     comments:Array,
   },
   data() {
-    return {};
+    return {
+    };
   },
 
   components: {},
