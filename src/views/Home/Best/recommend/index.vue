@@ -1,10 +1,10 @@
 <template>
   <div class="banner">
-    <img src="" alt="">
+    <img src="../../../../assets/images/zp-banner.jpg" alt="" style="width:100%;height:100%">
   </div>
   <section class="rec-content">
     <act-list :imgList="imgList"></act-list>
-    <best-way :wayList="wayList"></best-way>
+    <best-way></best-way>
     <hot-list></hot-list>
   </section>
 </template>
@@ -17,18 +17,13 @@
   export default defineComponent({
     setup() {
       const imgList = reactive([
-        "",
-        "",
-        "",
-        ""
+        "//42.192.155.18:3180/images/zp/activity/activity01.png",
+        "//42.192.155.18:3180/images/zp/activity/activity02.png",
+        "//42.192.155.18:3180/images/zp/activity/activity03.png",
+        "//42.192.155.18:3180/images/zp/activity/activity04.png"
       ])
 
-      const wayList = reactive([
-        "",
-        ""
-      ])
-
-      return { imgList, wayList }
+      return { imgList }
     },
     components: {
       ActList,

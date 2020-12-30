@@ -2,10 +2,10 @@
   <!-- 登录后 -->
   <div class="personal">
     <header>
-      <section class="cont">
+      <section class="cont" @click="toUpdateUser">
         <div class="lef">
-          <h2>用户名</h2>
-          <span>10积分 ></span>
+          <h2>{{ userInfo.username }}</h2>
+          <span>{{userInfo.score}} 积分 ></span>
         </div>
         <div class="rig">
           <img :src="urls" alt="">
@@ -33,6 +33,9 @@
 import urls from "../../../src/assets/images/personal.png";
 import url from "../../../src/assets/images/personal-bg.png";
 export default {
+  props: {
+    userInfo: Object
+  },
   data() {
     return {
       urls: urls,
@@ -46,7 +49,11 @@ export default {
 
   mounted() {},
 
-  methods: {}
+  methods: {
+    toUpdateUser() {
+      this.$router.push({path: "/updatemsg"})
+    }
+  }
 };
 </script>
 <style lang='less' scoped>

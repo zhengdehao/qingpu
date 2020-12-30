@@ -18,6 +18,7 @@ import { defineComponent,ref,reactive } from "vue";
 import commhead from "../list/commhead.vue";
 import noaddress from "./noaddress.vue";
 import hasaddress from "./hasaddress.vue";
+import { getAddressListApi } from "../../../utils/api";
 export default {
   data() {
     return {
@@ -34,12 +35,17 @@ export default {
 
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    this.getAddressList();
   },
 
   methods: {
     handleScroll() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||document.body.scrollTop;
       this.number = scrollTop;
+    },
+    async getAddressList() {
+      const res = await getAddressListApi({phone: localStorage.getItem("phone")});
+      console.log(res);
     }
   }
 };

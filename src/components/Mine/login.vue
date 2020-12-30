@@ -15,19 +15,19 @@
         @blur="phonemsg"
       />
       <van-field
-        v-model="sms"
+        v-model="code"
         center
         clearable
         label="短信验证码"
         placeholder="请输入短信验证码"
       >
         <template #button>
-          <van-button size="small" type="primary" :disabled="disabled" color="#39828C">发送验证码</van-button>
+          <van-button size="small" type="primary" :disabled="disabled" color="#39828C" @click="getCode">发送验证码</van-button>
         </template>
       </van-field>
     </van-cell-group>
     </div>
-    <van-button type="primary" to="/best" :disabled="disabled" size="large" color="#39828C">登录</van-button>
+    <van-button type="primary" :disabled="disabled" size="large" color="#39828C" @click="loginInto">登录</van-button>
   </div>
 </template>
 
@@ -35,13 +35,14 @@
 //引入头部导航条
 import commhead from "./list/commhead.vue";
 import { defineComponent,ref,reactive } from "vue";
-
+import { getCodeApi, loginIntoApi } from "../../utils/api"
 export default {
   data() {
     return {
       number:0,
       errmsg: "",
       phone: "",
+      code: "",
       disabled: false
     };
   },
@@ -61,9 +62,9 @@ export default {
       this.number = scrollTop;
     },
     phonemsg() {
-      let reg = /^(13)\d{9}$/;
+      let reg = /^1\d{10}$/;
       let tel = this.phone;
-      console.log(reg.test(tel));
+      // console.log(reg.test(tel));
       if(reg.test(tel)){
         this.errmsg = "";
         this.disabled = false;
@@ -71,6 +72,23 @@ export default {
         this.errmsg = "手机号码格式错误";
         this.disabled = true;
       }
+    },
+    async getCode() {
+      const res = await getCodeApi({phone: this.phone});
+      // console.log(res);
+    },
+    async loginInto() {
+      // console.log(1)
+      const res = await loginIntoApi({phone: this.phone, code: this.code});
+      
+      console.log(res);
+      if(res.status === "0") {
+        localStorage.setItem("phone",res.phone);
+        this.$router.push({path: "/mine"});
+      } else {
+        alert("验证码错误，清重新输入验证码")
+      }
+
     }
   }
 };

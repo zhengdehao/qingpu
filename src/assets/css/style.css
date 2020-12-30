@@ -1,5 +1,9 @@
 .best-header .van-nav-bar__content {
   height: 44px;
+  box-shadow: none;
+}
+.best-header .van-sticky--fixed {
+  padding: 0 15px;
 }
 .best-header .van-tabs__nav {
   padding-left: 5px;

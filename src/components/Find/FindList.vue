@@ -1,50 +1,44 @@
 <template>
-<div style="overflow-x:hidden">
-  <div class="findlist">
-    <ul>
-      <li @click="change">
-        <div>
-          <p>会员&共建人</p>
-          <h3>1月青浦雅集</h3>
-        </div>
-      </li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+  <div style="overflow-x: hidden">
+    <div class="findlist">
+      <ul>
+        <li @click="change(item.id)" v-for="item in findList">
+          <img :src="item.indexImg" alt="" />
+          <div></div>
+        </li>
+      </ul>
+    </div>
   </div>
-
-</div>
 </template>
 
 <script lang='ts'>
-import BScroll from 'better-scroll';
+import BScroll from "better-scroll";
 export default {
+  props: ["findList"],
   data() {
-    return {
-
-    };
+    return {};
   },
 
   components: {},
 
   computed: {},
 
-  mounted() {
-    this.$nextTick(()=>{
-       new BScroll(".findlist", {
+  watch: {
+    async findList() {
+      await this.$nextTick();
+      new BScroll(".findlist", {
         scrollX: true,
         scrollY: false,
-        click: true
+        click: true,
       });
-    })
+    },
   },
+  mounted() {},
 
   methods: {
-   change(){
-     this.$router.push(`/elegant/2`)
-   }
+    change(id:any) {
+      this.$router.push(`/elegant/${id}`);
+    },
   },
 };
 </script>
@@ -58,32 +52,30 @@ export default {
     li {
       overflow: hidden;
       float: left;
-      border-radius:5px;
+      border-radius: 5px;
       flex-shrink: 0;
       width: 207px;
       height: 124px;
       margin-right: 12.5px;
       background-color: wheat;
       position: relative;
-      div{
+      div {
         width: 100%;
-        color:white;
+        color: white;
         position: absolute;
         bottom: 0px;
         padding-bottom: 20px;
-        background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(0,0,0,0.4));
-        p{
-          padding-left: 15px;
-          font-size: 12px;
-        }
-        h3{
-          padding-left: 15px;
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 20px;
-        }
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(0, 0, 0, 0.4)
+        );
+      }
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
   }
 }
-</style>
+</style> 
