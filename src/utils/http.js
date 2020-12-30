@@ -25,6 +25,7 @@ const http = {
         .post(url, obj)
         .then(res => {
           if (res.data.status === "0") {
+            // console.log(res)
             resolve(res.data);
           } else {
             console.log(res.msg);
