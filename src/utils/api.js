@@ -21,3 +21,6 @@ export const getUserInfoApi = params => http.post("users/getInfo", params);
 
 //获得首页详情
 export const getHomeDetail = params => http.post("home/detail", params);
+
+// 获得收获地址
+export const getAddressListApi = params => http.post("address/get", params);

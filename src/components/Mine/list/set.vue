@@ -17,7 +17,7 @@
         <p><van-icon :name="item.name" /></p>
       </router-link>
     </ul>
-    <van-cell title="退出登录" @click="tip"/>
+    <van-cell title="退出登录" @click="tip" v-if="isLogin"/>
     </div>
   </div>
 </template>
@@ -50,7 +50,8 @@ export default {
           name: "arrow",
           url: "/about"
         }
-      ]
+      ],
+      isLogin: localStorage.getItem("phone")
     };
   },
 
@@ -77,12 +78,13 @@ export default {
       })
         .then(() => {
           // on confirm
+          localStorage.removeItem("phone");
+          this.$router.push({path: "/mine"});
         })
         .catch(() => {
           // on cancel
         });
     }
-    
   }
 }
 </script>
