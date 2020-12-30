@@ -85,7 +85,7 @@ export default defineComponent ({
 
     const router = useRouter()
 
-    function intoDetail(id) {
+    function intoDetail(id:any) {
       console.log(1);
       // router.push({
       //   name: '/bestdetail',
@@ -104,7 +104,7 @@ export default defineComponent ({
     recommend
   },
   methods: {
-    async getGoodsList(index) {
+    async getGoodsList(index:any) {
       this.type = this.state.navList[index].type;
       const res = await getGoodsListApi({type: this.type});
       console.log(res);

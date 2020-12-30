@@ -39,13 +39,13 @@ import {
   PullRefresh,  
   Field,
   SwipeCell,
+  Popup,
   Checkbox,
   CheckboxGroup,
   SubmitBar,
   AddressList,
   AddressEdit,
   Switch,
-  Popup,
   Picker
   // Dialog
 } from 'vant';

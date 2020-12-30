@@ -5,7 +5,7 @@
     <span class="hotspan" :border="false">热门目的地</span>
     <hotList :homeHotList="homeHotList" />
     <!-- 主题推荐 -->
-    <homeList :homeListData="homeHotList" />
+    <homeList />
     <!-- 人文假日 -->
     <otherList :hometitle="homeTitle[0]" :homeListData="homeHolidayList" />
     <!-- 人文知旅 -->
@@ -44,11 +44,11 @@ export default defineComponent ({
   },
 
   setup() {
+    //定义组件title
     const homeTitle = reactive(["人文假日", "人文知旅", "在地艺文体验", "溯心"]);
 
     return { homeTitle };
   },
-
   components: {
     Banner,
     hotList,
@@ -76,8 +76,6 @@ export default defineComponent ({
       this.homeHolidayList = res.result.holidayList;
       //人文知旅
       this.homeTripList = res.result.tripList;
-
-      console.log( res.result);
     },
     //显示轻提示
     toas() {
@@ -86,7 +84,7 @@ export default defineComponent ({
         Toast({
           message: "项目名称：青普\n\n项目参与人员\n郑德豪\n邱根国\n陈田\n吕慧笑\n竹文倩\n戴泓程\n\n以上排名不分先后顺序",
           icon: 'like-o',
-          duration: 5000
+          duration: 10000
         });
         sessionStorage.setItem('toastFlag', '1');
       }
@@ -108,9 +106,6 @@ export default defineComponent ({
     font-size: 16px;
     font-weight: bold;
   }
-  //轻提示
-
-
 }
 
 </style>

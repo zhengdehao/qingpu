@@ -2,29 +2,27 @@
   <div class="tour">
     <!-- 随滑动高度切换切换的两个不同的头部 -->
     <detail-header-one v-if="!flag" />
-    <detail-header-two :themetitle="themeTitle" v-if="flag" />
+    <detail-header-two :themetitle="tourDetail.title" v-if="flag" />
     <!-- 臻品的详情内容 -->
     <div class="wrapper">
       <div>
         <detail-banner />
         <div class="content">
-          <h2>{{ themeTitle }}</h2>
-          <div class="price"><span>￥5088.00</span><i>起</i></div>
+          <h2>{{ tourDetail.title }}</h2>
+          <div class="price"><span>{{ tourDetail.price }}</span><i>起</i></div>
           <p class="size">
-            <span>5天4晚</span>
+            <span>{{ tourDetail.days }}</span>
             <i>
               <van-icon name="notes-o" size="22" color="#656565" />
             </i>
           </p>
           <div class="img">
-            <img
-              src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-              alt=""
-            />
+            <img :src="tourDetail.bgImg" alt="" />
           </div>
           <div class="explain">
-            <van-cell title="费用说明" is-link />
-            <van-cell title="注意事项" is-link />
+            <van-cell title="费用说明" is-link  @click="toTourCost" :detailTxt= "tourDetail.feeDes" />
+            <van-cell title="注意事项" is-link  @click="toTourNotice" :detailTxt= "tourDetail.announcements" />
+            <!-- <van-popup v-model:show="show">内容</van-popup> -->
           </div>
         </div>
       </div>
@@ -39,11 +37,13 @@ import DetailHeaderTwo from "../../components/Common/DetailHeaderOne.vue";
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import ShopBar from "../../components/Home/tour/ShopBar.vue";
 import BScroll from "better-scroll";
+//引入api
+import { postTourApi } from "../../utils/api";
 export default {
   data() {
     return {
       flag: false as Boolean,
-      themeTitle: "青普x鼓浪屿|一场建筑与文化的交融",
+      tourDetail: {}
     };
   },
 
@@ -65,16 +65,35 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
-    bs.on("scroll", (position) => {
+    bs.on("scroll", (position:any) => {
       this.flag = position.y < -180;
     });
     bs.on("pullingUp", async () => {
       await this.$nextTick();
       bs.refresh();
     });
+    //请求人文知旅详情数据
+    this.postTour();
   },
 
-  methods: {},
+  methods: {
+    //请求人文知旅详情数据
+    async postTour() {
+      const res = await postTourApi({ id:this.$route.params.tourDetailId });
+      this.tourDetail = res.result[0];
+    },
+    //点击进入费用详情
+    toTourCost() {
+      this.$router.push("/tourcost");
+    },
+    //点击进入注意事项
+    toTourNotice() {
+      this.$router.push("/tournotice");
+    },
+    // toTourCos() {
+    //   this.show = 
+    // }
+  },
 };
 </script>
 
@@ -134,6 +153,7 @@ export default {
     background: yellowgreen;
     img {
       width: 100%;
+      height: 100%;
     }
   }
   .explain {

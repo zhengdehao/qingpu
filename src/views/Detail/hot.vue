@@ -114,7 +114,7 @@ export default {
       pullUpLoad: true,
       probeType: 3,
     });
-    bs.on("scroll", (position) => {
+    bs.on("scroll", (position:any) => {
       this.flag = position.y < -180;
     });
     bs.on("pullingUp", async () => {
@@ -135,12 +135,12 @@ export default {
     async getDetailList() {
       let res = await getHomeListApi();
       // res = JSON.parse(JSON.stringify(res));
-      console.log(res.result);
-      console.log(res.result.holidayList.filter(item => item.provinceName == this.provinceName))
-      this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
-      this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
-      this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
-      console.log(this.detailList);
+      // console.log(res.result);
+      // console.log(res.result.holidayList.filter(item => item.provinceName == this.provinceName))
+      // this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
+      // this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
+      // this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
+      // console.log(this.detailList);
     }
   },
   watch: {
