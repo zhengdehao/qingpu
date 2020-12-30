@@ -2,7 +2,7 @@
 <!--臻品商品的详情页面  -->
   <div class="bestdetail">
     <!-- 随滑动高度切换切换的两个不同的头部 -->
-    <detail-header-one v-if="!flag"></detail-header-one>
+    <detail-header-one v-show="!flag"></detail-header-one>
      <detail-header-two :themetitle="themeTitle" v-if="flag"></detail-header-two>
      <!-- 臻品的详情内容 -->
      <div class="wrapper">
