@@ -1,27 +1,40 @@
 <template>
   <div class="tour">
-    <!-- 随滑动高度切换切换的两个不同的头部 -->
-    <detail-header-one v-if="!flag" />
-    <detail-header-two :themetitle="tourDetail.title" v-if="flag" />
+    <!-- 随滑动高度切换切换的不同的头部样式 -->
+    <detail-header :themetitle="tourDetail.title" :flag="flag"></detail-header>
     <!-- 臻品的详情内容 -->
     <div class="wrapper">
       <div>
         <detail-banner :bannerList="tourDetail.sliderImgs" />
         <div class="content">
           <h2>{{ tourDetail.title }}</h2>
-          <div class="price"><span>{{ tourDetail.price }}</span><i>起</i></div>
+          <div class="price">
+            <span>{{ tourDetail.price }}</span
+            ><i>起</i>
+          </div>
           <p class="size">
             <span>{{ tourDetail.days }}</span>
             <i>
               <van-icon name="notes-o" size="22" color="#656565" />
             </i>
           </p>
+          <h4>度假介绍</h4>
           <div class="img">
-            <img :src="tourDetail.bgImg" alt="" />
+            <img :src="tourDetail.des" alt="" />
           </div>
           <div class="explain">
-            <van-cell title="费用说明" is-link  @click="toTourCost" :detailTxt= "tourDetail.feeDes" />
-            <van-cell title="注意事项" is-link  @click="toTourNotice" :detailTxt= "tourDetail.announcements" />
+            <van-cell
+              title="费用说明"
+              is-link
+              @click="toTourCost"
+              :detailTxt="tourDetail.feeDes"
+            />
+            <van-cell
+              title="注意事项"
+              is-link
+              @click="toTourNotice"
+              :detailTxt="tourDetail.announcements"
+            />
             <!-- <van-popup v-model:show="show">内容</van-popup> -->
           </div>
         </div>
@@ -32,8 +45,8 @@
 </template>
 
 <script lang="ts">
-import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
-import DetailHeaderTwo from "../../components/Common/DetailHeaderOne.vue";
+//头部
+import DetailHeader from "../../components/Common/DetailHeader.vue";
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import ShopBar from "../../components/Home/tour/ShopBar.vue";
 import BScroll from "better-scroll";
@@ -43,13 +56,12 @@ export default {
   data() {
     return {
       flag: false as Boolean,
-      tourDetail: {}
+      tourDetail: {},
     };
   },
 
   components: {
-    DetailHeaderOne,
-    DetailHeaderTwo,
+    DetailHeader,
     DetailBanner,
     ShopBar,
   },
@@ -57,21 +69,6 @@ export default {
   computed: {},
 
   mounted() {
-    this.$nextTick();
-    let bs = new BScroll(".wrapper", {
-      scrollX: false,
-      scrollY: true,
-      click: true,
-      pullUpLoad: true,
-      probeType: 3,
-    });
-    bs.on("scroll", (position:any) => {
-      this.flag = position.y < -180;
-    });
-    bs.on("pullingUp", async () => {
-      await this.$nextTick();
-      bs.refresh();
-    });
     //请求人文知旅详情数据
     this.postTour();
   },
@@ -79,8 +76,23 @@ export default {
   methods: {
     //请求人文知旅详情数据
     async postTour() {
-      const res = await postTourApi({ id:this.$route.params.tourDetailId });
+      const res = await postTourApi({ id: this.$route.params.tourDetailId });
       this.tourDetail = res.result[0];
+      this.$nextTick();
+      let bs = new BScroll(".wrapper", {
+        scrollX: false,
+        scrollY: true,
+        click: true,
+        pullUpLoad: true,
+        probeType: 3,
+      });
+      bs.on("scroll", (position: any) => {
+        this.flag = position.y < -180;
+      });
+      bs.on("pullingUp", async () => {
+        await this.$nextTick();
+        bs.refresh();
+      });
     },
     //点击进入费用详情
     toTourCost() {
@@ -91,7 +103,7 @@ export default {
       this.$router.push("/tournotice");
     },
     // toTourCos() {
-    //   this.show = 
+    //   this.show =
     // }
   },
 };
@@ -148,12 +160,9 @@ export default {
     }
   }
   .img {
-    width: 100%;
-    height: 900px;
-    background: yellowgreen;
     img {
-      width: 100%;
-      height: 100%;
+      width: 375px;
+      margin-left: -22px;
     }
   }
   .explain {

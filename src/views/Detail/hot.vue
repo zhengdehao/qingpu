@@ -1,12 +1,13 @@
 <template>
-  <hot-header v-show="true" :provinceName="provinceName" />
+  <van-icon name="arrow-left"  class="headarrows" v-show="!flag" @click="goback"/>
+  <hot-header v-if="flag" :provinceName="provinceName" />
   <div class="wrapper">
     <div class="hotdetail">
       <h1>{{ provinceName }}</h1>
       <div class="content">
         <!-- 需要用v-if来判断有没有改省份的人文之旅-->
-        <div class="holiday">
-          <h2>人文假日</h2>
+        <div class="holiday" v-if="detailList.holidayList">
+          <h2 v-if="detailList.holidayList.length">人文假日</h2>
           <div
           v-for="item in detailList.holidayList"
           :key="item.id" class="detailboxx"
@@ -19,7 +20,9 @@
             <p>{{ item.price }}</p>
             <span>{{item.title}}</span>
           </div>
-          <h2>人文知旅</h2>
+        </div>
+        <div class="tour" v-if="detailList.tripList">
+          <h2 v-if="detailList.tripList.length">人文知旅</h2>
           <ul>
             <li
             v-for="item in detailList.tripList"
@@ -35,8 +38,8 @@
             </li>
           </ul>
         </div>
-        <div class="art">
-          <h2>在地艺文体验</h2>
+        <div class="art" v-if="detailList.expList">
+          <h2 v-if="detailList.expList.length">在地艺文体验</h2>
           <ul>
             <li
             v-for="item in detailList.expList"

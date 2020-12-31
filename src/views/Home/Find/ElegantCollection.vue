@@ -1,5 +1,5 @@
 <template>
-  <header-one v-if="!flag"></header-one>
+  <header-one v-show="!flag"></header-one>
   <header-two :themetitle="find[0].title" v-if="flag"></header-two>
   <div class="wrapper">
     <van-pull-refresh
@@ -23,8 +23,8 @@
       <template #loading>
         <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
       </template>
-
-      <div v-if="find.length">
+      <keep-alive>
+       <div v-if="find.length">
         <img
           class="themeImg"
           :src="find[0].detailImg"
@@ -39,7 +39,8 @@
           <h3>{{item.title}}</h3>
           <h6>{{item.author}}</h6>
         </article>
-      </div>
+       </div>
+      </keep-alive>
     </van-pull-refresh>
   </div>
 </template>

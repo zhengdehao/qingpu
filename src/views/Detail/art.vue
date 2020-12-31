@@ -1,13 +1,12 @@
 <template>
   <!--在地艺文体验的详情页面 -->
   <div class="art">
-    <!-- 随滑动高度切换切换的两个不同的头部 -->
-    <detail-header-one v-if="!flag"></detail-header-one>
-    <detail-header-two :themetitle="detailData.title" v-if="flag"></detail-header-two>
+    <!-- 随滑动高度切换切换的不同的头部样式 -->
+    <detail-header :themetitle="detailData.title" :flag="flag"></detail-header>
     <!-- 在地艺文体验的详情内容 -->
     <div class="wrapper">
       <div>
-        <detail-banner :bannerList="detailData.sliderImgs"/>
+        <detail-banner :bannerList="detailData.sliderImgs" />
         <div class="content">
           <h2>{{ detailData.title }}</h2>
           <h3>套餐内容</h3>
@@ -31,9 +30,9 @@
 </template>
 
 <script lang='ts'>
-//两个切换的头部
-import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
-import DetailHeaderTwo from "../../components/Common/DetailHeaderTwo.vue";
+//头部
+import DetailHeader from "../../components/Common/DetailHeader.vue";
+
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import BScroll from "better-scroll";
 //引入api
@@ -47,39 +46,38 @@ export default {
   },
 
   components: {
-    DetailHeaderOne,
-    DetailHeaderTwo,
+    DetailHeader,
     DetailBanner,
   },
 
   computed: {},
 
   mounted() {
-    this.$nextTick();
-    let bs = new BScroll(".wrapper", {
-      scrollX: false,
-      scrollY: true,
-      click: true,
-      pullUpLoad: true,
-      probeType: 3,
-     
-    });
-    bs.on("scroll", (position:any) => {
-      this.flag = position.y < -180;
-    });
-    bs.on("pullingUp", async () => {
-      await this.$nextTick();
-      bs.refresh();
-    });
     //请求详情页数据
     this.postExpDetail();
   },
   methods: {
     //请求详情页数据
-    async postExpDetail(){
-      const res = await postExpDetailApi({ id:this.$route.params.artId });
+    async postExpDetail() {
+      const res = await postExpDetailApi({ id: this.$route.params.artId });
       this.detailData = res.result[0];
-    }
+      // console.log(this.detailData);
+      this.$nextTick();
+      let bs = new BScroll(".wrapper", {
+        scrollX: false,
+        scrollY: true,
+        click: true,
+        pullUpLoad: true,
+        probeType: 3,
+      });
+      bs.on("scroll", (position: any) => {
+        this.flag = position.y < -180;
+      });
+      bs.on("pullingUp", async () => {
+        await this.$nextTick();
+        bs.refresh();
+      });
+    },
   },
 };
 </script>

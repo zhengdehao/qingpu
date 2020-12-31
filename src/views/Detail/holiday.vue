@@ -2,9 +2,8 @@
 <!-- ?????下来的padding-bottom有点问题 -->
 <!--人文假日的详情页面 -->
   <div class="holiday">
-      <!-- 随滑动高度切换切换的两个不同的头部 -->
-      <detail-header-one v-if="!flag"></detail-header-one>
-      <detail-header-two :themetitle="detailData.title" v-if="flag"></detail-header-two>
+      <!-- 随滑动高度切换切换的不同的头部样式 -->
+    <detail-header :themetitle="detailData.title" :flag="flag"></detail-header>
       <!-- 臻品的详情内容 -->
       <div class="wrapper">
         <div>
@@ -21,7 +20,7 @@
                     </i>
                 </p>
                 <div class="img">
-                  <img :src="detailData.bgImg" alt="">
+                  <img :src="detailData.des" alt="">
                 </div>
                 <collapse/>
                 <div class="path">
@@ -60,7 +59,7 @@
                         <h6>客房面积：{{ item.area }}㎡</h6>
                       </p>
                       <!-- 单选框的name在循环的时候，需要用index当值 -->
-                        <van-radio :name=index checked-color="#388388"></van-radio>
+                        <van-radio :name="index" checked-color="#388388"></van-radio>
                     </div>
                 </van-radio-group></div>
                 <p class="button">立即体验</p>
@@ -71,9 +70,8 @@
 </template>
 
 <script lang='ts'>
-//两个切换的头部
-import DetailHeaderOne from "../../components/Common/DetailHeaderOne.vue";
-import DetailHeaderTwo from "../../components/Common/DetailHeaderTwo.vue";
+//头部
+import DetailHeader from "../../components/Common/DetailHeader.vue";
 
 import DetailBanner from "../../components/Common/DetailBanner.vue";
 import BScroll from "better-scroll";
@@ -94,47 +92,46 @@ export default {
   data() {
     return {
       flag: false as Boolean,
-      detailData: {}
+      detailData: {},
     };
   },
 
   components: {
-    DetailHeaderOne,
-    DetailHeaderTwo,
+    DetailHeader,
     DetailBanner,
     ShopBar,
-    Collapse
+    Collapse,
   },
 
   computed: {},
 
-  mounted() {   
-    this.$nextTick();
-    let bs = new BScroll(".wrapper", {
-      scrollX: false,
-      scrollY: true,
-      click: true,
-      pullUpLoad: true,
-      probeType: 3,
-    });
-    bs.on("scroll", (position:any) => {
-      this.flag = position.y < -180;
-    });
-    bs.on("pullingUp", async () => {
-      await this.$nextTick();
-      bs.refresh();
-    });
+  mounted() {
     //请求详情页的数据
     this.postHoliday();
   },
 
   methods: {
     //请求详情页数据
-    async postHoliday(){
-      const res = await postHolidayApi({ id:this.$route.params.homeDetailId });
+    async postHoliday() {
+      const res = await postHolidayApi({ id: this.$route.params.homeDetailId });
       this.detailData = res.result[0];
-    }
-  }
+      this.$nextTick();
+      let bs = new BScroll(".wrapper", {
+        scrollX: false,
+        scrollY: true,
+        click: true,
+        pullUpLoad: true,
+        probeType: 3,
+      });
+      bs.on("scroll", (position: any) => {
+        this.flag = position.y < -180;
+      });
+      bs.on("pullingUp", async () => {
+        await this.$nextTick();
+        bs.refresh();
+      });
+    },
+  },
 };
 </script>
 <style lang='less' scoped>
@@ -179,6 +176,7 @@ export default {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
     padding: 26px 0;
+    margin-bottom: 60px;
     justify-content: space-between;
     align-items: center;
     span {
@@ -188,12 +186,9 @@ export default {
     }
   }
   .img {
-    width: 100%;
-    height: 900px;
-    background: yellowgreen;
     img {
-      width: 100%;
-      height: 100%;
+      width: 375px;
+      margin-left: -22px;
     }
   }
   .path {

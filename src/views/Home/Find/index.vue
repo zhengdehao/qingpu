@@ -1,5 +1,5 @@
 <template>
-  <find-header v-if="flag"></find-header>
+  <find-header v-show="flag"></find-header>
   <div class="wrapper">
     <van-pull-refresh
       v-model="state.loading"
@@ -22,13 +22,14 @@
       <template #loading>
         <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
       </template>
-
-      <div class="find">
+      <keep-alive>
+        <div class="find">
         <h1>发现</h1>
         <find-list :findList="findList"></find-list>
         <h2>人文周刊</h2>
         <humanity-list :cultureList="cultureList" />
       </div>
+      </keep-alive>
     </van-pull-refresh>
   </div>
 </template>

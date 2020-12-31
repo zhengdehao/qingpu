@@ -3,8 +3,8 @@
     <van-swipe-item v-for="(item, index) in bannerList" :key="item">
       <img :src="item" alt="">
     </van-swipe-item>
-    <template #indicator>
-      <progress class="custom-indicator" :value="((current + 1) / 4) * 100" max="100"></progress>
+    <template #indicator v-if="bannerList">
+      <progress class="custom-indicator" :value="((current + 1) / bannerList.length) * 100" max="100"></progress>
     </template>
   </van-swipe>
 </template>
@@ -29,7 +29,7 @@ export default defineComponent({
 .my-swipe{
   position: relative;
   img {
-    width: 100%;
+    min-width: 100%;
     height: 100%;
   }
 }
