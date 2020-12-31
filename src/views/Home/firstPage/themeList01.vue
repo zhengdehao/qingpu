@@ -1,8 +1,8 @@
 <template>
   <hadertwo themetitle="等一个人，陪我去扬州" />
   <img src="../../../assets/images/jiujiu/home04.jpg" alt="" class="headImg">
-  <div class="headaside"></div>
-  <div class="detailbox">
+  <!-- <div class="headaside"></div> -->
+  <!-- <div class="detailbox">
     <ul>
       <li>
         <div class="mask">度假</div>
@@ -11,7 +11,7 @@
         <div class="price"></div>
       </li>
     </ul>
-  </div>
+  </div> -->
 </template>
 
 <script lang='ts'>

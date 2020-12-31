@@ -6,7 +6,7 @@
     <!-- 臻品的详情内容 -->
     <div class="wrapper">
       <div>
-        <detail-banner />
+        <detail-banner :bannerList="tourDetail.sliderImgs" />
         <div class="content">
           <h2>{{ tourDetail.title }}</h2>
           <div class="price"><span>{{ tourDetail.price }}</span><i>起</i></div>

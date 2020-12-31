@@ -20,7 +20,7 @@ export default defineComponent ({
     }
   },
   methods : {
-    toHotList(id) {
+    toHotList(id:any) {
       this.$router.push({path: "/hotlist/" + id})
     }
   }
@@ -28,6 +28,7 @@ export default defineComponent ({
 </script>
 
 <style lang='less' scoped>
+@import "../../assets/styles/jiujiu.less";
 .hotBox {
   overflow: auto;
     &::-webkit-scrollbar {

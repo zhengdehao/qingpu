@@ -1,6 +1,5 @@
 <template>
-  <van-icon name="arrow-left"  class="headarrows" v-if="!flag" @click="goback"/>
-  <hot-header v-show="flag" :provinceName="provinceName" />
+  <hot-header v-show="true" :provinceName="provinceName" />
   <div class="wrapper">
     <div class="hotdetail">
       <h1>{{ provinceName }}</h1>
@@ -8,7 +7,11 @@
         <!-- 需要用v-if来判断有没有改省份的人文之旅-->
         <div class="holiday">
           <h2>人文假日</h2>
-          <div v-for="item in detailList.holidayList" :key="item.id">
+          <div
+          v-for="item in detailList.holidayList"
+          :key="item.id" class="detailboxx"
+          @click="toholidaydetail(item)"
+          >
             <img
               :src="item.bgImg"
               alt=""
@@ -16,19 +19,13 @@
             <p>{{ item.price }}</p>
             <span>{{item.title}}</span>
           </div>
-          <!-- <div>
-            <img
-              src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-              alt=""
-            />
-            <p>¥1988.00起</p>
-            <span>青普文化行馆·丽江白沙</span>
-          </div>
-        </div>
-        <div class="tour"> -->
           <h2>人文知旅</h2>
           <ul>
-            <li v-for="item in detailList.tripList" :key="item.id">
+            <li
+            v-for="item in detailList.tripList"
+            :key="item.id" class="detailboxx"
+            @click="totripdetail(item)"
+            >
               <img
                 :src="item.bgImg"
                 alt=""
@@ -36,47 +33,22 @@
               <span>{{item.title}}</span>
               <p>{{ item.price }}</p>
             </li>
-            <!-- <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-              <p>¥1988.00起</p>
-            </li> -->
           </ul>
         </div>
         <div class="art">
           <h2>在地艺文体验</h2>
           <ul>
-            <li v-for="item in detailList.expList" :key="item.id">
+            <li
+            v-for="item in detailList.expList"
+            :key="item.id" class="detailboxx"
+            @click="toexpdetail(item)"
+            >
               <img
                 :src="item.bgImg"
                 alt=""
               />
               <span>{{ item.title }}</span>
             </li>
-            <!-- <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-            </li>
-            <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-            </li>
-            <li>
-              <img
-                src="http://42.192.155.18:3180/images/banner/banner_02.jpg"
-                alt=""
-              />
-              <span>青普文化行馆·丽江白沙</span>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -93,7 +65,6 @@ export default {
   data() {
     return {
       provinceName: "",
-      flag: false as Boolean,
       detailList: {}
     };
   },
@@ -113,9 +84,6 @@ export default {
       click: true,
       pullUpLoad: true,
       probeType: 3,
-    });
-    bs.on("scroll", (position:any) => {
-      this.flag = position.y < -180;
     });
     bs.on("pullingUp", async () => {
       await this.$nextTick();
@@ -140,8 +108,26 @@ export default {
       this.detailList["holidayList"] = res.result.holidayList.filter(item => item.provinceName == this.provinceName);
       this.detailList["tripList"] = res.result.tripList.filter(item => item.provinceName == this.provinceName);
       this.detailList["expList"] = res.result.expList.filter(item => item.provinceName == this.provinceName);
-      // console.log(this.detailList);
-    }
+    },
+    //跳转详情
+    toholidaydetail(item:any){
+        this.$router.push({
+          name: "homeDetail",
+          params: { homeDetailId: item.id}
+        });
+    },
+    totripdetail(item:any){
+        this.$router.push({
+          name: "tourDetail",
+          params: { tourDetailId: item.id}
+        })
+    },
+    toexpdetail(item:any){
+        this.$router.push({
+          name: "artdetail",
+          params: { artId: item.id}
+        });
+    },
   },
   watch: {
     provinceName() {
@@ -190,6 +176,7 @@ export default {
         display: block;
         font-size: 15px;
         line-height: 30px;
+        padding: 0 10px;
       }
     }
     .tour,
@@ -229,5 +216,8 @@ export default {
   top: 0;
   left: 10px;
   z-index: 999;
+}
+.detailboxx {
+  margin-bottom: 20px;
 }
 </style>

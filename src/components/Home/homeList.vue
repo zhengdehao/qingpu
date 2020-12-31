@@ -1,6 +1,6 @@
 <template>
   <div class="homeListBox">
-    <van-cell title="当季主题推荐" is-link value="查看全部" :border="false" />
+    <van-cell title="当季主题推荐" is-link  :border="false" class="otherTitle"/>
     <div class="itemBox">
       <ul class="homeListUl">
         <li @click="toTheme(1)"><img src="../../assets/images/jiujiu/home01.jpg" alt=""></li>
@@ -25,6 +25,7 @@ export default defineComponent ({
 });
 </script>
 <style lang='less' scoped>
+@import "../../assets/styles/jiujiu.less";
 .van-cell--clickable {
   font-size: 16px;
   padding: 0;
