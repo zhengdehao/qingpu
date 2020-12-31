@@ -1,6 +1,5 @@
 <template>
-  <van-icon name="arrow-left"  class="headarrows" v-show="!flag" @click="goback"/>
-  <hot-header v-if="flag" :provinceName="provinceName" />
+  <hot-header v-if="true" :provinceName="provinceName" />
   <div class="wrapper">
     <div class="hotdetail">
       <h1>{{ provinceName }}</h1>

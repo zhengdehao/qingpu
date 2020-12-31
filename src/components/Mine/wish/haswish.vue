@@ -1,7 +1,7 @@
 <template>
   <div class="haswish">
     <van-checkbox-group v-model="state.checked" ref="checkboxGroup">
-      <template v-for="item in state.checkedList">
+      <template v-for="(item,index) in state.checkedList" :key="index">
         <van-swipe-cell >
           <template #left>
             <van-checkbox :name="item" />
@@ -14,7 +14,7 @@
             :thumb="item.thumb"
           />
           <template #right>
-            <van-button square text="删除" type="danger" class="delete-button" />
+            <van-button square text="删除" type="danger" class="delete-button" @click="del(index)"/>
           </template>
         </van-swipe-cell>
       </template>
@@ -42,19 +42,19 @@ export default {
         {
           title:"yayay",
           num:2,
-          price:3000,
+          price:3415,
           thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
         },
         {
           title:"ccccc",
           num:2,
-          price:3000,
+          price:4234,
           thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
         },
         {
           title:"nnnnn",
           num:2,
-          price:3000,
+          price:436,
           thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
         },
         {
@@ -66,13 +66,13 @@ export default {
         {
           title:"ggggg",
           num:2,
-          price:3000,
+          price:653,
           thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
         },
         {
           title:"lllll",
           num:2,
-          price:3000,
+          price:764,
           thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
         }
       ]
@@ -98,11 +98,16 @@ export default {
       return sum += item.price*100
     }, 0))
 
+
+  const del = (index)=> {
+    this.checkedList.splice(this.checkedList[index],1)
+  }
     return { 
       state,
       allPrice,
       checkAll,
-      checkboxGroup
+      checkboxGroup,
+      del
     };
   }
 };

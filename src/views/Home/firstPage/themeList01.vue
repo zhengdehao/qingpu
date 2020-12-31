@@ -16,7 +16,7 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
-import hadertwo from "../../../components/Common/DetailHeaderTwo.vue";
+import hadertwo from "../../../components/Common/DetailHeader.vue";
 export default defineComponent ({
   props: ["listindex"],
   components: {
