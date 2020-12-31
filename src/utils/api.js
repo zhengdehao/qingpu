@@ -35,3 +35,6 @@ export const setAddressApi = params => http.post("address/set", params);
 
 //修改收货地址
 export const updateAddressApi = params => http.post("address/update", params);
+
+//获取热卖臻品
+export const getHotGoodsApi = params => http.get("goods/hot", params);

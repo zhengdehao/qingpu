@@ -34,7 +34,6 @@ export default {
     ul {
       li {
         width: 100%;
-        background: pink;
         height: 75px;
         margin-bottom: 12px;
       }

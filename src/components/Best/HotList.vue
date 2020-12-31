@@ -3,10 +3,10 @@
     <h3>热卖臻品</h3>
     <div class="hot-list">
       <ul>
-        <li v-for="(item, index) in 4" :key="index">
-          <img src="" alt="">
-          <p></p>
-          <span></span>
+        <li v-for="(item, index) in hotList" :key="item.id">
+          <img :src="item.bgImg" alt="">
+          <p>{{ item.nm }}</p>
+          <span>{{ item.minprice }}</span>
         </li>
       </ul>
     </div>
@@ -15,6 +15,9 @@
 
 <script>
 export default {
+  props: {
+    hotList: Array
+  },
   data() {
     return {};
   },
@@ -37,9 +40,27 @@ export default {
       li {
         width: 165px;
         height: 200px;
-        background: pink;
         margin-bottom: 30px;
         flex-shrink: 0;
+        p {
+          line-height: 18px;
+          font-size: 12px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #333333;
+        }
+        span { 
+          font-size: 10px;
+          font-family: DIN Light;
+          font-weight: 400;
+          color: #666666;
+          display: block;
+          margin: 5px 0 10px;
+        }
+        img {
+          height: 165px;
+          width: 165px;
+        }
       }
     }
   }
