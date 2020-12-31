@@ -5,7 +5,7 @@
   <section class="rec-content">
     <act-list :imgList="imgList"></act-list>
     <best-way></best-way>
-    <hot-list></hot-list>
+    <hot-list :hotList="hotList"></hot-list>
   </section>
 </template>
 
@@ -14,6 +14,7 @@
   import ActList from "../../../../components/Best/ActList.vue";
   import BestWay from "../../../../components/Best/BestWay.vue";
   import HotList from "../../../../components/Best/HotList.vue";
+  import { getHotGoodsApi } from "../../../../utils/api";
   export default defineComponent({
     setup() {
       const imgList = reactive([
@@ -25,10 +26,25 @@
 
       return { imgList }
     },
+    data() {
+      return {
+        hotList:[]
+      }
+    },
     components: {
       ActList,
       BestWay,
       HotList
+    },
+    mounted() {
+      this.getHotGoods();
+    },
+    methods: {
+      async getHotGoods() {
+        const res = await getHotGoodsApi();
+        console.log(res);
+        this.hotList = res.result;
+      }
     }
 
   });

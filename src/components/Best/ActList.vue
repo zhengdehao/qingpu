@@ -44,7 +44,6 @@ export default {
       justify-content: space-between;
       li {
         width: 209px;
-        background: pink;
         height: 107px;
       }
     }
