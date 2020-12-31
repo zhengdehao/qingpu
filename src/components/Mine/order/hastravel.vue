@@ -17,46 +17,40 @@ export default {
   setup() {
     const proList = reactive([
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·扬州瘦西湖",
+        num:1,
+        price:2088,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_04.jpg"
       },
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·苏州木渎",
+        num:1,
+        price:1488,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_05.jpg"
       },
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·黄山秀里",
+        num:1,
+        price:1286,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_01.jpg"
       },
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·八达岭瑞云",
+        num:1,
+        price:888,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_02.jpg"
       },
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·丽江白沙",
+        num:1,
+        price:1988,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_06.jpg"
       },
       {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-      },
-      {
-        title:"hahaha",
-        num:2,
-        price:3000,
-        thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+        title:"青普文化行馆·南靖土楼",
+        num:1,
+        price:2088,
+        thumb:"http://42.192.155.18:3180/images/home/holiday_03.jpg"
       }
     ])
 

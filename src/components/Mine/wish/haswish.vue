@@ -28,52 +28,47 @@
 
 <script>
 import { defineComponent,reactive,ref,computed } from "vue";
+import {Toast} from "vant";
 export default {
   setup() {
     const state = reactive({
       checked: ref([]),
       checkedList: [
         {
-          title:"hahaha",
-          num:2,
-          price:3000,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"原创臻品|青普创|山海经图案多功能桌垫",
+          num:1,
+          price:58,
+          thumb:"http://42.192.155.18:3180/images/zp/hcmq/hcmq01.jpg"
         },
         {
-          title:"yayay",
-          num:2,
-          price:3415,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"万仟臻选·《清平乐》孤城闭成套茶席",
+          num:1,
+          price:1280,
+          thumb:"http://42.192.155.18:3180/images/zp/hcmq/hcmq02.jpg"
         },
         {
-          title:"ccccc",
-          num:2,
-          price:4234,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"万仟臻选·梅秀早春茶具",
+          num:1,
+          price:58,
+          thumb:"http://42.192.155.18:3180/images/zp/hcmq/hcmq03.jpg"
         },
         {
-          title:"nnnnn",
-          num:2,
-          price:436,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"使用保香·事事如意茶罐",
+          num:1,
+          price:1180,
+          thumb:"http://42.192.155.18:3180/images/zp/hcmq/hcmq05.jpg"
         },
         {
-          title:"mmmm",
-          num:2,
-          price:3000,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"青普定制·锡口青白瓷茶仓",
+          num:1,
+          price:568,
+          thumb:"http://42.192.155.18:3180/images/zp/yczp/yczp08.jpg"
         },
         {
-          title:"ggggg",
-          num:2,
-          price:653,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
-        },
-        {
-          title:"lllll",
-          num:2,
-          price:764,
-          thumb:"https://img.yzcdn.cn/vant/ipad.jpeg"
+          title:"铁包银茶则·失传工艺复兴 古拙美",
+          num:1,
+          price:1600,
+          thumb:"http://42.192.155.18:3180/images/zp/yczp/yczp13.jpg"
         }
       ]
     })
@@ -99,16 +94,21 @@ export default {
     }, 0))
 
 
-  const del = (index)=> {
-    this.checkedList.splice(this.checkedList[index],1)
-  }
+  
     return { 
       state,
       allPrice,
       checkAll,
-      checkboxGroup,
-      del
+      checkboxGroup
     };
+  },
+  methods: {
+    del(index) {
+      this.checkedList.splice(this.checkedList[index],1)
+    },
+    onSubmit() {
+      Toast("订单已经提交");
+    }
   }
 };
 </script>

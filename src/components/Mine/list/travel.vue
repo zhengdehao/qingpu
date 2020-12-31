@@ -5,8 +5,8 @@
     <div :class="[number>=50?'mypage-tip':'mypage-sco']">行程订单</div>
     <div class="mainlist">
       <h1>行程订单</h1>
-      <notravel />
-      <!-- <hastravel /> -->
+      <!-- <notravel /> -->
+      <hastravel />
     </div>
     <van-button type="primary" to="/" size="large" color="#39828C">去看看</van-button>
   </div>

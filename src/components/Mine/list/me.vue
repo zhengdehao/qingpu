@@ -10,7 +10,7 @@
         <van-tab title="签证"></van-tab>
       </van-tabs>
     </div>
-    <van-button type="primary" size="large" color="#39828C">添加</van-button>
+    <!-- <van-button type="primary" size="large" color="#39828C">添加</van-button> -->
   </div>
 </template>
 
