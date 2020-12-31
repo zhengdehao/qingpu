@@ -13,7 +13,7 @@
         />
       </div>
       <van-field
-        v-model="value"
+        v-model="username"
         label="昵称"
         center
         placeholder="输入框内容右对齐"
@@ -30,7 +30,7 @@
         />
       </van-popup>
     </div>
-    <van-button type="primary" size="large" color="#39828C">完成</van-button>
+    <van-button type="primary" size="large" color="#39828C" @click="updateUserInfo">完成</van-button>
 
     
   </div>
@@ -41,9 +41,11 @@ import { Toast } from 'vant';
 //引入头部导航条
 import commhead from "./list/commhead.vue";
 import { defineComponent,ref,reactive } from "vue";
+import { updateUserInfoApi, getUserInfoApi } from "../../utils/api";
 
 export default {
   setup() {
+    const username = ref("");
     const show = ref(false);
     const showPopup = () => {
       show.value = true;
@@ -65,7 +67,8 @@ export default {
       onCancel,
       onConfirm,
       showSex,
-      fileList
+      fileList,
+      username
     };
     
   },
@@ -81,6 +84,7 @@ export default {
   computed: {},
   mounted() {
     window.addEventListener("scroll", this.handleScroll); 
+    this.getUserInfo();
   },
   
 
@@ -88,6 +92,17 @@ export default {
     handleScroll() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||document.body.scrollTop;
       this.number = scrollTop;
+    },
+    async updateUserInfo() {
+      const res = await updateUserInfoApi({phone: localStorage.getItem("phone"), username: this.username, sex: this.showSex});
+      console.log(res);
+      this.$router.go(-1);
+    },
+    async getUserInfo() {
+      const res = await getUserInfoApi({phone: localStorage.getItem("phone")});
+      console.log(res);
+      this.username = res.result[0].username;
+      this.showSex = res.result[0].sex;
     }
   }
 };

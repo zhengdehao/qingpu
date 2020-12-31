@@ -22,3 +22,12 @@ export const getHomeDetail = params => http.post("home/detail", params);
 
 // 获得收获地址
 export const getAddressListApi = params => http.post("address/get", params);
+
+// 修改个人信息
+export const updateUserInfoApi = params => http.post("users/update", params);
+
+//新增收获地址
+export const setAddressApi = params => http.post("address/set", params);
+
+//修改收货地址
+export const updateAddressApi = params => http.post("address/update", params);

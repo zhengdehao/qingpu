@@ -36,7 +36,7 @@ const routes = [
       }
     ]
   },
-   {//发现的雅集页面
+  {//发现的雅集页面
     path: "/elegant/:id",
     component: () => import("../views/Home/Find/ElegantCollection.vue")
   },
@@ -73,6 +73,11 @@ const routes = [
     //我的设置页面添加地址路由
     path: "/addressEdit",
     component: () => import("../components/Mine/manage/addressEdit.vue")
+  },
+  {
+    path: "/addressUpdate/:id",
+    component: () => import("../components/Mine/manage/addressEdit.vue"),
+    props:true
   },
   {
     //我的设置页面添加推送通知路由

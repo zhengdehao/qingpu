@@ -6,11 +6,12 @@
       <h1>地址管理</h1>
       <van-address-edit
         :area-list="areaList"
-        show-postal
-        show-delete
-        show-set-default
+        :show-postal="false"
+        :show-delete="del"
+        :show-set-default="false"
         show-search-result
-        show-area="false"
+        :show-area="true"
+        :address-info="curAddress"
         :search-result="searchResult"
         :area-columns-placeholder="['请选择', '请选择', '请选择']"
         @save="onSave"
@@ -25,7 +26,9 @@
 <script>
 import commhead from "../list/commhead.vue"
 import { Toast } from 'vant';
+import { setAddressApi, getAddressListApi, updateAddressApi } from "../../../utils/api";
 export default {
+  props:["id"],
   data() {
     return {
       areaList:{
@@ -337,7 +340,12 @@ export default {
         }
       },
       searchResult: [],
-      number:0
+      number:0,
+      address: "",
+      getPhone: "",
+      getName: "",
+      curAddress: {},
+      del: this.id ? true : false
     };
   },
 
@@ -346,14 +354,50 @@ export default {
   },
 
   computed: {},
-
+  // watch: {
+  //   curAddress() {
+  //     this.address = this.curAddress.address;
+  //     this.getPhone = this.curAddress.getPhone;
+  //     this.getName = this.curAddress.getName;
+  //   }
+  // },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    if(this.id) {
+      this.getAddressList();
+    }
   },
 
   methods: {
-    onSave() {
-      Toast('save');
+    async onSave(cont) {
+      console.log(cont); // tel  name
+      this.address = cont.province + " " + cont.city + " " + cont.county + " " + cont.addressDetail;
+      // console.log(this.address);
+      this.getPhone = cont.tel;
+
+      this.getName = cont.name;
+
+
+
+
+      if(this.id) {
+        const res = await updateAddressApi({
+          phone: localStorage.getItem("phone"),
+          id: this.id,
+          getName: this.getName,
+          getPhone: this.getPhone,
+          address: this.address
+        }) 
+      } else {
+          const res = await setAddressApi({
+          phone: localStorage.getItem("phone"),
+          getName: this.getName,
+          getPhone: this.getPhone,
+          address: this.address
+        });
+      }
+      // console.log(res);
+      this.$router.push({ path: "/address" });
     },
     onDelete() {
       Toast('delete');
@@ -369,6 +413,18 @@ export default {
       } else {
         this.searchResult = [];
       }
+    },
+
+
+    async getAddressList() {
+      const res = await getAddressListApi({phone: localStorage.getItem("phone")});
+      console.log(res);
+      // this.list = res.addressList;
+      const result = res.addressList.filter(item => item.id === this.id)[0];
+      this.curAddress.name = result.getName;
+      this.curAddress.tel = result.getPhone;
+      this.curAddress.address = result.address;
+      console.log(this.curAddress);
     },
     handleScroll() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||document.body.scrollTop;

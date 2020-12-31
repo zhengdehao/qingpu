@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <ul>
+    <ul v-if="isLogin">
       <router-link
         tag="li"
         v-for="item in memberList"
@@ -12,6 +12,19 @@
         <p><van-icon :name="item.name" /></p>
       </router-link>
     </ul>
+    <ul v-else>
+      <router-link
+        tag="li"
+        v-for="item in memberList"
+        :key="item.icon"
+        to="/login"
+        class="lili"
+      >
+        <p>{{ item.title }}</p>
+        <p><van-icon :name="item.name" /></p>
+      </router-link>
+    </ul>
+
   </div>
 </template>
 
@@ -19,6 +32,7 @@
 export default {
   data() {
     return {
+      isLogin: localStorage.getItem("phone"),
       memberList: [
         {
           title: "行程订单",
